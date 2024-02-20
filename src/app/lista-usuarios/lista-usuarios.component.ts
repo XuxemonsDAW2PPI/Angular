@@ -10,6 +10,18 @@ import {UsersService} from "../services/users.service";
 })
 export class ListaUsuariosComponent implements OnInit {
 
+
+
+
+
+
+  eliminarUsuario(_t8: Usuario) {
+throw new Error('Method not implemented.');
+}
+editarUsuario(_t8: Usuario) {
+throw new Error('Method not implemented.');
+}
+
   currentPage: number = 1;
   pageSize: number = 48; // Ajusta según la necesidad de mostrar filas de 6
   usersInPage: Usuario[] = [];
@@ -31,20 +43,7 @@ export class ListaUsuariosComponent implements OnInit {
       .catch(err => console.error('Error al cargar el archivo JSON:', err));
   }
 
-  getPreviousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.updateUsersBasedOnPage();
-    }
-  }
-
-  getNextPage() {
-    const totalPages = Math.ceil(this.allUsers.length / this.pageSize);
-    if (this.currentPage < totalPages) {
-      this.currentPage++;
-      this.updateUsersBasedOnPage();
-    }
-  }
+ 
 
   updateUsersBasedOnPage() {
     const startIndex = (this.currentPage - 1) * this.pageSize;

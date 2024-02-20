@@ -8,12 +8,12 @@
     }">
       <p>{{ user.Nombre }}</p>
       <p>{{ user.Tipo }}</p>
+      <!-- Botones de Editar y Eliminar -->
+      <button mat-button (click)="editarUsuario(user)">Editar</button>
+      <button mat-button (click)="eliminarUsuario(user)">Eliminar</button>
     </div>
   </div>
 </div>
-<button (click)="getPreviousPage()" [disabled]="currentPage === 1">Anterior</button>
-<button (click)="getNextPage()" [disabled]="currentPage * pageSize >= allUsers.length">Siguiente</button>
-
 
 <ng-template #noUsers>
   <p>No hay usuarios para mostrar.</p>
