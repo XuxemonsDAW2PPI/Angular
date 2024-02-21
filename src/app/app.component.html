@@ -4,10 +4,10 @@
   <button *ngIf="currentRoute !== '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/login">Login</button>
   
   <!-- Muestra el botón de lista de usuarios y volver al login solo si la ruta actual es /lista-usuarios -->
-  <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/lista-usuarios">Lista de Usuarios</button>
-  <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/login">Volver al Login</button>
+  
+  <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/menu">Volver al Menu</button>
 
-  <span class="toolbar-spacer"></span> <!-- Este elemento actúa como un separador -->
+  <span class="toolbar-spacer"></span> 
   <!-- Modificación aquí: Muestra el botón de crear solo si la ruta actual es /lista-usuarios -->
   <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button color="accent" routerLink="/crear-usuario">Crear</button>
 </mat-toolbar>

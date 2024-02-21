@@ -1,0 +1,80 @@
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f4f4; /* Ajusta el color de fondo según tu diseño */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff; /* Ajusta el color de fondo del encabezado según tu diseño */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .currency {
+    display: flex;
+    align-items: center;
+  }
+  
+  .currency img {
+    width: 24px; /* Ajusta el tamaño según tu diseño */
+    margin-right: 5px;
+  }
+  
+  .currency span {
+    font-size: 1.2em;
+    color: #333; /* Ajusta el color según tu diseño */
+  }
+  
+  .main-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px; /* Esto creará espacio entre los elementos del menú */
+  }
+  
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px; /* Ajusta el ancho según tu diseño */
+    height: 150px; /* Ajusta la altura según tu diseño */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  .icon-container img {
+    width: 60px; /* Ajusta según tu diseño */
+    height: auto;
+  }
+  
+  .title-container {
+    margin-top: 10px;
+  }
+  
+  .title-container span {
+    font-size: 1em;
+    color: #333; /* Ajusta el color según tu diseño */
+    font-weight: bold;
+  }
+  

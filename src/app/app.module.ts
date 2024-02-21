@@ -18,6 +18,7 @@ import {MatCardModule} from "@angular/material/card";
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { RegisterComponent } from './register/register.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     ErrorComponent,
     RegisterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

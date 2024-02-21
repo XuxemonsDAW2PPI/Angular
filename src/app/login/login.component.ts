@@ -21,6 +21,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // Redirige a la ruta de la lista de usuarios tras el intento de login
-    this.router.navigate(['/lista-usuarios']);
+    this.router.navigate(['/menu']);
   }
 }
