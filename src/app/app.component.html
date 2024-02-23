@@ -1,14 +1,16 @@
 <mat-toolbar color="primary">
-  <!-- Muestra los botones de registro y login solo si la ruta actual NO es /lista-usuarios -->
-  <button *ngIf="currentRoute !== '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/register">Registro</button>
-  <button *ngIf="currentRoute !== '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/login">Login</button>
+  <!-- Muestra los botones de registro y login solo si la ruta actual NO es /menu -->
+  <button *ngIf="currentRoute !== '/lista-usuarios'  &&  currentRoute !== '/menu'" mat-raised-button class="nav-button" routerLink="/register">Registro</button>
+  <button *ngIf="currentRoute !== '/lista-usuarios'  &&  currentRoute !== '/menu'" mat-raised-button class="nav-button" routerLink="/login">Login</button>
   
-  <!-- Muestra el botón de lista de usuarios y volver al login solo si la ruta actual es /lista-usuarios -->
-  
+  <!-- Muestra el botón de lista de usuarios y volver al menú solo si la ruta actual es /lista-usuarios -->
   <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button class="nav-button" routerLink="/menu">Volver al Menu</button>
-
+  
+  <!-- Modificación: Muestra el botón de cerrar sesión en vez de los botones de registro y login cuando la ruta actual es /menu -->
+  <button *ngIf="currentRoute === '/menu'" mat-raised-button color="warn" class="nav-button" (click)="logout()">Cerrar sesión</button>
+  
   <span class="toolbar-spacer"></span> 
-  <!-- Modificación aquí: Muestra el botón de crear solo si la ruta actual es /lista-usuarios -->
+  <!-- Muestra el botón de crear solo si la ruta actual es /lista-usuarios -->
   <button *ngIf="currentRoute === '/lista-usuarios'" mat-raised-button color="accent" routerLink="/crear-usuario">Crear</button>
 </mat-toolbar>
 

@@ -33,6 +33,9 @@ throw new Error('Method not implemented.');
     this.loadUsers();
   }
 
+  debugUsuarios() {
+    window.alert('Xuxemon debugado');
+  }
   loadUsers() {
     fetch('assets/jmy6n-jpr2k.json')
       .then(response => response.json())

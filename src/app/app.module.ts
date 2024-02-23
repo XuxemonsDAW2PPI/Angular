@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { CommonModule } from '@angular/common';
 // Components
 import {ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
 
@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { MenuComponent } from './menu/menu.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    CommonModule,
     ReactiveFormsModule,
 
     // Angular Material

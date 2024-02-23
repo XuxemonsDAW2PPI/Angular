@@ -8,6 +8,9 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+logout() {
+  this.router.navigate(['/login']);
+}
   title = 'ServicesPractica';
   currentRoute: string;
 

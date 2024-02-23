@@ -1,20 +1,22 @@
-<div *ngIf="usersInPage.length > 0; else noUsers" class="users-grid">
-  <div class="user-card" *ngFor="let user of usersInPage">
-    <img [src]="user.Imagen" [alt]="user.Nombre" class="user-image">
-    <div class="user-info" [ngClass]="{
-      'tipo-tierra': user.Tipo === 'Tierra',
-      'tipo-aire': user.Tipo === 'Aire',
-      'tipo-agua': user.Tipo === 'Agua'
-    }">
-      <p>{{ user.Nombre }}</p>
-      <p>{{ user.Tipo }}</p>
-      <!-- Botones de Editar y Eliminar -->
-      <button mat-button (click)="editarUsuario(user)">Editar</button>
-      <button mat-button (click)="eliminarUsuario(user)">Eliminar</button>
+<div>
+  <button mat-button (click)="debugUsuarios()">Debug</button>
+  <div *ngIf="usersInPage.length > 0; " class="users-grid">
+    <!-- Botón Debug al inicio de la lista de usuarios -->
+    
+    
+    <div class="user-card" *ngFor="let user of usersInPage">
+      <img [src]="user.Imagen" [alt]="user.Nombre" class="user-image">
+      <div class="user-info" [ngClass]="{
+        'tipo-tierra': user.Tipo === 'Tierra',
+        'tipo-aire': user.Tipo === 'Aire',
+        'tipo-agua': user.Tipo === 'Agua'
+       }">
+        <p>{{ user.Nombre }}</p>
+        <p>{{ user.Tipo }}</p>
+        <!-- Botones de Editar y Eliminar -->
+        <button mat-button (click)="editarUsuario(user)">Editar</button>
+        <button mat-button (click)="eliminarUsuario(user)">Eliminar</button>
+      </div>
     </div>
   </div>
 </div>
-
-<ng-template #noUsers>
-  <p>No hay usuarios para mostrar.</p>
-</ng-template>
