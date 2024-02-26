@@ -20,7 +20,7 @@ label {
   color: #343a40;
 }
 
-input[type=email], input[type=password] {
+input[type=email], input[type=password], input[type=text], select {
   width: 100%;
   padding: 10px 15px;
   margin-top: 5px;
@@ -30,7 +30,7 @@ input[type=email], input[type=password] {
   transition: border 0.3s ease;
 }
 
-input[type=email]:focus, input[type=password]:focus {
+input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, select:focus {
   border-color: #28a745;
   outline: none;
 }

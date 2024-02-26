@@ -1,15 +1,26 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div>
+    <label for="Nombre">Nombre:</label>
+    <input type="text" formControlName="Nombre" [(ngModel)]="usuario.Nombre">
+  </div>
+  <div>
     <label for="email">Email:</label>
-    <input type="email" formControlName="email">
+    <input type="email" formControlName="email" [(ngModel)]="usuario.Email" >
   </div>
   <div>
     <label for="password">Password:</label>
-    <input type="password" formControlName="password">
+    <input type="password" formControlName="password" [(ngModel)]="usuario.Password">
   </div>
   <div>
     <label for="repeatPassword">Repeat Password:</label>
     <input type="password" formControlName="repeatPassword">
+  </div>
+  <div>
+    <label for="UserType">Tipo de Usuario:</label>
+    <select name="UserType" formControlName="UserType" [(ngModel)]="usuario.UserType">
+      <option value="Usuario"> Usuario </option>
+      <option value="Admin"> Administrador </option>
+    </select>
   </div>
   <button type="submit">Register</button>
 </form>

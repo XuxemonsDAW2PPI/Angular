@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; // Importa Router para la navegación
+import { Login } from "../../models/Login";
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,27 @@ import { Router } from '@angular/router'; // Importa Router para la navegación
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  usuario: Login = {
+    Nombre: '',
+    Password: '',
+  };
 
-  constructor(private fb: FormBuilder, private router: Router) {} // Inyecta Router para usarlo en la navegación
+  constructor(private fb: FormBuilder, private router: Router, private service: UsersService ) {} // Inyecta Router para usarlo en la navegación
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      Nombre: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    // Redirige a la ruta de la lista de usuarios tras el intento de login
-    this.router.navigate(['/menu']);
+    this.service.login(this.usuario).subscribe(response => {
+      // Manejar la respuesta del servidor si es necesario
+      this.router.navigate(['/menu']);
+    }, error => {
+      alert(error.message || 'Ha ocurrido un error')
+    });
+    
   }
 }

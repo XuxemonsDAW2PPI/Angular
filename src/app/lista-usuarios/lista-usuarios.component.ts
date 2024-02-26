@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {Usuario} from "../../models/user.model";
+import {Xuxemon} from "../../models/Xuxemon";
 import {UsersService} from "../services/users.service";
 
 @Component({
@@ -15,17 +15,17 @@ export class ListaUsuariosComponent implements OnInit {
 
 
 
-  eliminarUsuario(_t8: Usuario) {
+eliminarXuxemon(_t8: Xuxemon) {
 throw new Error('Method not implemented.');
 }
-editarUsuario(_t8: Usuario) {
+editarXuxemon(_t8: Xuxemon) {
 throw new Error('Method not implemented.');
 }
 
   currentPage: number = 1;
   pageSize: number = 48; // Ajusta según la necesidad de mostrar filas de 6
-  usersInPage: Usuario[] = [];
-  allUsers: Usuario[] = [];
+  usersInPage: Xuxemon[] = [];
+  allUsers: Xuxemon[] = [];
 
   constructor() { }
 
@@ -33,7 +33,7 @@ throw new Error('Method not implemented.');
     this.loadUsers();
   }
 
-  debugUsuarios() {
+  debugXuxemons() {
     window.alert('Xuxemon debugado');
   }
   loadUsers() {

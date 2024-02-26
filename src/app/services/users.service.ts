@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from "rxjs";
-import {  Usuario } from "../../models/user.model";
+import { Xuxemon } from "../../models/Xuxemon";
+import { Usuario } from "../../models/Usuario";
+import { Login } from "../../models/Login";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
@@ -11,14 +13,14 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(page: number = 1): Observable<Usuario[]> {
+  getUsers(page: number = 1): Observable<Xuxemon[]> {
     // Ejemplo de HttpHeaders
     const httpHeaders: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
 
     // Ejemplo de HttpParams
     const httpParams: HttpParams = new HttpParams().set("page", page.toString());
 
-    return this.http.get<Usuario[]>("https://reqres.in/api/users", { headers: httpHeaders, params: httpParams }).pipe(
+    return this.http.get<Xuxemon[]>("https://reqres.in/api/users", { headers: httpHeaders, params: httpParams }).pipe(
       map((res: any) => {
         console.log(res);
         return res.data;
@@ -26,21 +28,16 @@ export class UsersService {
     );
   }
 
-  register(data: { email: string; password: string }): Observable<any> {
-    return this.http.post('https://reqres.in/api/register', data, {
+  register(data: Usuario): Observable<any> {
+    return this.http.post('http://127.0.0.1:8000/api/User/store', data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
 
-  login(data: { email: string; password: string }): Observable<any> {
-    return this.http.post('https://reqres.in/api/login', data, {
+  login(data: Login ): Observable<any> {
+    return this.http.post('http://127.0.0.1:8000/api/User/login', data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    }).pipe(
-      map((res: any) => {
-        // Aquí podrías manejar la respuesta de login, como guardar tokens
-        return res;
-      })
-    );
+    });
   }
 
 }

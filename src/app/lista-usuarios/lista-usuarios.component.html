@@ -1,5 +1,5 @@
 <div>
-  <button mat-button (click)="debugUsuarios()">Debug</button>
+  <button mat-button (click)="debugXuxemons()">Debug</button>
   <div *ngIf="usersInPage.length > 0; " class="users-grid">
     
     
@@ -14,8 +14,8 @@
         <p>{{ user.Nombre }}</p>
         <p>{{ user.Tipo }}</p>
         <!-- Botones de Editar y Eliminar -->
-        <button mat-button (click)="editarUsuario(user)">Editar</button>
-        <button mat-button (click)="eliminarUsuario(user)">Eliminar</button>
+        <button mat-button (click)="editarXuxemon(user)">Editar</button>
+        <button mat-button (click)="eliminarXuxemon(user)">Eliminar</button>
       </div>
     </div>
   </div>
