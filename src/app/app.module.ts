@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
+import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { MenuComponent } from './menu/menu.component';
     ErrorComponent,
     RegisterComponent,
     MenuComponent,
+    EditXuxemonComponent,
+    CrearXuxemonComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    ReactiveFormsModule,
+    
 
     // Angular Material
     BrowserAnimationsModule,
