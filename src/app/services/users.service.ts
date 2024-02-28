@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: 'root'
 })
 export class UsersService {
+  allUsers: any[] = [];
 
   constructor(private http: HttpClient) {
   }
@@ -40,4 +41,14 @@ export class UsersService {
     });
   }
 
-}
+  loadUsers() {
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/Xuxemon/');
+  }
+
+  editXuxemon(data: Xuxemon, id: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/update/${id}`;
+    return this.http.post(url, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+  }

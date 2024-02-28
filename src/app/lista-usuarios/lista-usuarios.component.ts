@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Xuxemon} from "../../models/Xuxemon";
-import {UsersService} from "../services/users.service";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs";
+import { Xuxemon } from "../../models/Xuxemon";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -10,24 +10,23 @@ import {UsersService} from "../services/users.service";
 })
 export class ListaUsuariosComponent implements OnInit {
 
+  mostrarEditXuxemon: boolean = false;
+  xuxemonSeleccionado: any; // Puedes cambiar esto según tu implementación
 
-
-
-
-
-eliminarXuxemon(_t8: Xuxemon) {
-throw new Error('Method not implemented.');
-}
-editarXuxemon(_t8: Xuxemon) {
-throw new Error('Method not implemented.');
-}
+  eliminarXuxemon(_t8: Xuxemon) {
+    throw new Error('Method not implemented.');
+  }
+  editarXuxemon(user: any): void {
+    this.xuxemonSeleccionado = user;
+    this.mostrarEditXuxemon = !this.mostrarEditXuxemon;
+  }
 
   currentPage: number = 1;
   pageSize: number = 48; // Ajusta según la necesidad de mostrar filas de 6
   usersInPage: Xuxemon[] = [];
   allUsers: Xuxemon[] = [];
 
-  constructor() { }
+  constructor(private userService: UsersService) { }
 
   ngOnInit() {
     this.loadUsers();
@@ -36,17 +35,19 @@ throw new Error('Method not implemented.');
   debugXuxemons() {
     window.alert('Xuxemon debugado');
   }
-  loadUsers() {
-    fetch('assets/jmy6n-jpr2k.json')
-      .then(response => response.json())
-      .then(data => {
+  loadUsers(): void {
+    this.userService.loadUsers()
+      .subscribe(data => {
         this.allUsers = data;
-        this.updateUsersBasedOnPage();
-      })
-      .catch(err => console.error('Error al cargar el archivo JSON:', err));
+        this.usersInPage = data;
+        console.log(this.allUsers);
+        // Aquí puedes llamar a cualquier método adicional para procesar los datos, si es necesario
+      }, error => {
+        console.error('Error al cargar los usuarios desde la API:', error);
+      });
   }
 
- 
+
 
   updateUsersBasedOnPage() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
