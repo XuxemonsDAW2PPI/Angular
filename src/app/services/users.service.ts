@@ -51,4 +51,17 @@ export class UsersService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
+
+  eliminarXuxemon(id: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/delete/${id}`;
+    return this.http.delete(url, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
   }
+
+  crearXuxemon(data: Xuxemon): Observable<any> {
+    return this.http.post('http://127.0.0.1:8000/api/Xuxemon/store', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+}

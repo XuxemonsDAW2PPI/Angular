@@ -5,15 +5,19 @@
   </div>
   <div>
     <label for="nombre">Nombre:</label>
-    <input id="nombre" type="text" formControlName="nombre">
+    <input id="Nombre" type="text" formControlName="Nombre">
   </div>
   <div>
     <label for="tipo">Tipo:</label>
-    <input id="tipo" type="text" formControlName="tipo">
+    <select id="tipo" formControlName="Tipo" required>
+      <option value="Agua">Agua</option>
+      <option value="Tierra">Tierra</option>
+      <option value="Aire">Aire</option>
+    </select>
   </div>
   <div>
     <label for="imagen">Imagen:</label>
-    <input id="imagen" type="text" formControlName="imagen">
+    <input id="Imagen" type="text" formControlName="Imagen">
   </div>
   <button type="submit" [disabled]="!xuxemonForm.valid">Guardar Cambios</button>
 </form>

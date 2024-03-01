@@ -1,5 +1,6 @@
 <div>
   <button mat-button (click)="debugXuxemons()">Debug</button>
+  <button mat-button (click)="crearXuxemon()">Crear Xuxemon</button>
   <div *ngIf="usersInPage.length > 0; " class="users-grid">
     <div class="user-card" *ngFor="let user of usersInPage">
       <img [src]="user.Imagen" [alt]="user.Nombre" class="user-image">
@@ -19,3 +20,4 @@
 </div>
 
 <app-editar-xuxemon *ngIf="mostrarEditXuxemon" [xuxemon]="xuxemonSeleccionado"></app-editar-xuxemon>
+<app-crear-xuxemon *ngIf="mostrarCrearXuxemon"></app-crear-xuxemon>
