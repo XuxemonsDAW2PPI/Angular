@@ -64,4 +64,8 @@ export class UsersService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
+
+  debugXuxemon(): Observable<any> {
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/Xuxemon/load');
+  }
 }

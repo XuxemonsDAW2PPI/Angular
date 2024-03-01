@@ -33,10 +33,7 @@ export class ListaUsuariosComponent implements OnInit {
   ngOnInit() {
     this.loadUsers();
   }
-
-  debugXuxemons() {
-    window.alert('Xuxemon debugado');
-  }
+  
   loadUsers(): void {
     this.userService.loadUsers()
       .subscribe(data => {
@@ -63,6 +60,18 @@ export class ListaUsuariosComponent implements OnInit {
       },
       error => {
         console.error('Error al eliminar el xuxemon:', error);
+      }
+    );
+  }
+
+  debugXuxemon(): void {
+    this.userService.debugXuxemon().subscribe(
+      response => {
+        console.log('Xuxemons creados correctamente:', response);
+        // Aquí puedes agregar lógica adicional, como volver a cargar la lista de usuarios
+      },
+      error => {
+        console.error('Error al crear Xuxemons:', error);
       }
     );
   }
