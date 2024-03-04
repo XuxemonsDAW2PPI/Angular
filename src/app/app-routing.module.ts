@@ -14,9 +14,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta de login
   { path: 'menu', component: MenuComponent }, // Ruta para cualquier otro path no especificado
 
-  { path: 'lista-usuarios', component: ListaUsuariosComponent }, // Ruta de lista de usuarios
-  { path: 'crear-xuxemon', component: CrearXuxemonComponent },
-  { path: 'edit-xuxemon/:id', component: EditXuxemonComponent },
+  // Modifica la ruta 'lista-usuarios' para incluir rutas hijas
+  { 
+    path: 'lista-usuarios', 
+    component: ListaUsuariosComponent, // Componente padre
+    children: [ // Rutas hijas
+      { path: 'crear-xuxemon', component: CrearXuxemonComponent }, // Ruta hija para crear
+      { path: 'edit-xuxemon/:id', component: EditXuxemonComponent }, // Ruta hija para editar
+    ] 
+  },
+
   { path: '**', component: ErrorComponent } // Ruta para cualquier otro path no especificado
 ];
 
