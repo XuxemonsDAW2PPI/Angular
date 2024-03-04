@@ -12,15 +12,15 @@ import { UsersService } from '../services/users.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   usuario: Login = {
-    Nombre: '',
-    Password: '',
+    nombre: '',
+    password: '',
   };
 
   constructor(private fb: FormBuilder, private router: Router, private service: UsersService ) {} // Inyecta Router para usarlo en la navegación
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      Nombre: ['', Validators.required],
+      nombre: ['', Validators.required],
       password: ['', Validators.required]
     });
   }

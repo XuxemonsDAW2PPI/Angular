@@ -1,7 +1,7 @@
 export interface Xuxemon {
   id: number;
-  Imagen: string;
-  Nombre: string;
-  Tipo: string;
-  Archivo: string;
+  imagen: string;
+  nombre: string;
+  tipo: string;
+  archivo: string;
 }

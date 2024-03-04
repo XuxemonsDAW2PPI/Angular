@@ -12,21 +12,21 @@ import { Usuario } from "../../models/Usuario";
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   usuario: Usuario = {
-    Nombre: '',
-    Email: '',
-    Password: '',
-    UserType: ''
+    nombre: '',
+    email: '',
+    password: '',
+    usertype: ''
   };
 
   constructor(private fb: FormBuilder, private router: Router, private service: UsersService ) {} // Inyecta Router para usarlo en la navegación
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      Nombre: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       repeatPassword: ['', Validators.required],
-      UserType: ['', Validators.required]
+      usertype: ['', Validators.required]
     }, { validator: this.checkPasswords });
   }
 

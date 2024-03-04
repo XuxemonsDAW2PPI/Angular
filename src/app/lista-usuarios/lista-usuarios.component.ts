@@ -56,6 +56,7 @@ export class ListaUsuariosComponent implements OnInit {
     this.userService.eliminarXuxemon(user.id).subscribe(
       response => {
         console.log('Xuxemon eliminado correctamente:', response);
+        this.loadUsers();
         // Aquí puedes agregar lógica adicional, como volver a cargar la lista de usuarios
       },
       error => {
@@ -68,6 +69,7 @@ export class ListaUsuariosComponent implements OnInit {
     this.userService.debugXuxemon().subscribe(
       response => {
         console.log('Xuxemons creados correctamente:', response);
+        this.loadUsers();
         // Aquí puedes agregar lógica adicional, como volver a cargar la lista de usuarios
       },
       error => {

@@ -1,15 +1,15 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="Nombre">Nombre:</label>
-    <input type="text" formControlName="Nombre" [(ngModel)]="usuario.Nombre">
+    <input type="text" formControlName="nombre" [(ngModel)]="usuario.nombre">
   </div>
   <div>
     <label for="email">Email:</label>
-    <input type="email" formControlName="email" [(ngModel)]="usuario.Email" >
+    <input type="email" formControlName="email" [(ngModel)]="usuario.email" >
   </div>
   <div>
     <label for="password">Password:</label>
-    <input type="password" formControlName="password" [(ngModel)]="usuario.Password">
+    <input type="password" formControlName="password" [(ngModel)]="usuario.password">
   </div>
   <div>
     <label for="repeatPassword">Repeat Password:</label>
@@ -17,7 +17,7 @@
   </div>
   <div>
     <label for="UserType">Tipo de Usuario:</label>
-    <select name="UserType" formControlName="UserType" [(ngModel)]="usuario.UserType">
+    <select name="usertype" formControlName="usertype" [(ngModel)]="usuario.usertype">
       <option value="Usuario"> Usuario </option>
       <option value="Admin"> Administrador </option>
     </select>

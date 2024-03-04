@@ -3,11 +3,11 @@
     <form [formGroup]="xuxemonForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="nombre">Nombre:</label>
-        <input id="Nombre" type="text" formControlName="Nombre" required>
+        <input id="nombre" type="text" formControlName="nombre" required>
       </div>
       <div>
         <label for="tipo">Tipo:</label>
-        <select id="tipo" formControlName="Tipo" required>
+        <select id="tipo" formControlName="tipo" required>
           <option value="Agua">Agua</option>
           <option value="Tierra">Tierra</option>
           <option value="Aire">Aire</option>
@@ -15,7 +15,7 @@
       </div>
       <div>
         <label for="imagen">Imagen URL:</label>
-        <input id="Imagen" type="text" formControlName="Imagen">
+        <input id="imagen" type="text" formControlName="imagen">
       </div>
       <button type="submit" mat-raised-button color="primary" [disabled]="!xuxemonForm.valid">Crear Xuxemon</button>
     </form>
