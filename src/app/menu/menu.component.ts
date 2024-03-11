@@ -14,4 +14,8 @@ export class MenuComponent {
     this.router.navigate(['/lista-usuarios']);
   }
 
+  navigateToInventory() { // Añade este método
+    this.router.navigate(['/inventario']); // Utiliza la ruta que definiste
+  }
+
 }

@@ -1,0 +1,73 @@
+.tarjetas-objetos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+h2{
+  padding-left: 55px;
+
+}
+
+button {
+  padding: 10px 20px;
+  margin-left: 50px;
+  margin-bottom: 20px; /* Espacio entre el botón y las tarjetas */
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  outline: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(22% - 20px); /* Ajuste el tamaño aquí si es necesario */
+  margin-bottom: 20px; /* Espacio extra en la parte inferior de cada tarjeta */
+}
+
+.card-cantidad {
+  font-size: 16px;
+  margin-top: 10px; /* Ajusta el espacio sobre la cantidad si es necesario */
+  color: #333; /* Ajusta el color si es necesario */
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto; /* Podrías ajustar esto si quieres un alto específico */
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  font-size: 18px; /* Ajuste el tamaño del título de la tarjeta si es necesario */
+}
+
+.card-text {
+  font-size: 16px; /* Ajuste el tamaño del texto de la tarjeta si es necesario */
+}

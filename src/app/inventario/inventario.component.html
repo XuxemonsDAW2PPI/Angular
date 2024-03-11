@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="titulo-inventario">INVENTARIO</h2>
+    <button (click)="incrementarCantidadAleatoria()">Añadir Cantidad Aleatoria</button>
+
+    <div class="tarjetas-objetos">
+      <div *ngFor="let objeto of objetos" class="card">
+        <img class="card-img-top" [src]="objeto.imagen" [alt]="objeto.nombre">
+        <div class="card-body">
+          <h5 class="card-title">{{ objeto.nombre }}</h5>
+          <p class="card-text">{{ objeto.descripcion }}</p>
+          <p class="card-cantidad">Cantidad: {{ objeto.cantidad }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
