@@ -15,6 +15,7 @@
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    position: relative;
   }
   
   .user-card:hover {
@@ -68,4 +69,15 @@
   .user-info a:hover {
     text-decoration: underline; /* Añade subrayado al pasar el mouse sobre los enlaces */
   }
+
+  
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px; /* Altura de la barra de progreso */
+    background-color: rgb(37, 168, 70); /* Color de fondo de la barra */
+    border: rgb(0, 0, 0);
+  }
+  
   

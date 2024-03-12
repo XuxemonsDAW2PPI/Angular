@@ -41,4 +41,17 @@ export class ListaxuxemonsSincrudComponent {
     const endIndex = startIndex + this.pageSize;
     this.usersInPage = this.allUsers.slice(startIndex, endIndex);
   }
+
+  calculateProgressBarWidth(tamano: string): string {
+    switch (tamano) {
+      case 'Pequeño':
+        return '30%'; 
+      case 'Mediano':
+        return '50%'; 
+      case 'Grande':
+        return '100%'; 
+      default:
+        return '0%'; 
+    }
+  }
 }

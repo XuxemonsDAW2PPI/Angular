@@ -1,5 +1,6 @@
  <div *ngIf="usersInPage.length > 0; " class="users-grid">
       <div class="user-card" *ngFor="let user of usersInPage">
+        <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
         <img [src]="user.imagen" [alt]="user.nombre" class="user-image">
         <div class="user-info" [ngClass]="{
           'tipo-tierra': user.tipo === 'Tierra',
