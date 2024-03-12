@@ -55,8 +55,10 @@ button:focus {
 }
 
 .card-img-top {
-  width: 100%;
-  height: auto; /* Podrías ajustar esto si quieres un alto específico */
+  padding-top: 20px;
+  padding-left: 10px;
+  width: 150px;
+  height: 150px; /* Podrías ajustar esto si quieres un alto específico */
 }
 
 .card-body {
