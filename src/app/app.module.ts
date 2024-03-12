@@ -22,6 +22,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
 import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { InventarioComponent } from './inventario/inventario.component';
     EditXuxemonComponent,
     CrearXuxemonComponent,
     InventarioComponent,
+    ListaxuxemonsSincrudComponent,
   ],
   imports: [
     BrowserModule,

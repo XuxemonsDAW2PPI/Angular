@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, // Redirige la ruta raíz al registro
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta de login
   { path: 'menu', component: MenuComponent }, // Ruta para cualquier otro path no especificado
   { path: 'inventario', component: InventarioComponent }, // Agrega esta línea
+  { path: 'xuxemons', component: ListaxuxemonsSincrudComponent }, // Agrega esta línea
 
   // Modifica la ruta 'lista-usuarios' para incluir rutas hijas
   { 

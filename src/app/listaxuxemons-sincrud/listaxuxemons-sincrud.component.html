@@ -1,0 +1,14 @@
+ <div *ngIf="usersInPage.length > 0; " class="users-grid">
+      <div class="user-card" *ngFor="let user of usersInPage">
+        <img [src]="user.imagen" [alt]="user.nombre" class="user-image">
+        <div class="user-info" [ngClass]="{
+          'tipo-tierra': user.tipo === 'Tierra',
+          'tipo-aire': user.tipo === 'Aire',
+          'tipo-agua': user.tipo === 'Agua'
+         }">
+          <p>{{ user.nombre }}</p>
+          <p>{{ user.tipo }}</p>
+        </div>
+      </div>
+    </div>
+  
