@@ -5,4 +5,5 @@ export interface Xuxemon {
   tipo: string;
   archivo: string;
   tamano: string;
+  caramelos: number;
 }

@@ -8,10 +8,7 @@ import { UsersService } from "../services/users.service";
   templateUrl: './listaxuxemons-sincrud.component.html',
   styleUrls: ['./listaxuxemons-sincrud.component.css']
 })
-export class ListaxuxemonsSincrudComponent {
-
-
-
+export class ListaxuxemonsSincrudComponent implements OnInit {
 
   currentPage: number = 1;
   pageSize: number = 48; // Ajusta según la necesidad de mostrar filas de 6
@@ -54,4 +51,20 @@ export class ListaxuxemonsSincrudComponent {
         return '0%'; 
     }
   }
+
+  alimentarXuxemon(user: Xuxemon) {
+    if (!user.caramelos) {
+      user.caramelos = 0;
+    }
+    
+    // Incrementar el contador de caramelos y actualizar el tamaño del xuxemon
+    user.caramelos += 1;
+
+    if (user.caramelos === 3) {
+      user.tamano = 'Mediano';
+    } else if (user.caramelos === 8) { // 3 caramelos anteriores + 5 más
+      user.tamano = 'Grande';
+    }
+  }
 }
+

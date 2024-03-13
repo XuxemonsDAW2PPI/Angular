@@ -79,5 +79,16 @@
     background-color: rgb(37, 168, 70); /* Color de fondo de la barra */
     border: rgb(0, 0, 0);
   }
+
+  .user-image.medium {
+    width: 150px; /* Tamaño medio */
+    height: 150px;
+  }
+  
+  .user-image.large {
+    width: 200px; /* Tamaño grande */
+    height: 200px;
+  }
+  
   
   
