@@ -79,7 +79,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       user.tamano = 'Mediano';
       user.caramelos = 0; // Reiniciar el contador de caramelos
     } else if (user.tamano === 'Mediano' && user.caramelos >= 5) {
-      user.tamano = 'Max.Level';
+      user.tamano = 'Grande';
       user.caramelos = 0; // Reiniciar el contador de caramelos
       user.maxLevelReached = true;
     }

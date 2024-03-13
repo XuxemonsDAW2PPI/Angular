@@ -2,7 +2,7 @@
   <div class="user-card" *ngFor="let user of usersInPage">
     <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
     <p *ngIf="user.tamano !== 'Max.Level'">Caramelos: {{ user.caramelos }}</p>
-    <p *ngIf="user.tamano === 'Max.Level'">Max Level</p>
+    <p *ngIf="user.tamano === 'Grande'">Max Level</p>
     <img [src]="user.imagen" [alt]="user.nombre" class="user-image"
          [ngStyle]="{'width': getSize(user.tamano)}">
     <div class="user-info" [ngClass]="{
