@@ -52,19 +52,40 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     }
   }
 
+  getSize(tamano: string): string {
+    switch (tamano) {
+      case 'Pequeño':
+        return '100px'; // Tamaño inicial
+      case 'Mediano':
+        return '150px'; // Tamaño mediano
+      case 'Max.Level':
+        return '200px'; // Tamaño grande
+      default:
+        return '100px'; // Tamaño por defecto
+    }
+  }
+  
+
   alimentarXuxemon(user: Xuxemon) {
     if (!user.caramelos) {
       user.caramelos = 0;
     }
     
-    // Incrementar el contador de caramelos y actualizar el tamaño del xuxemon
+    // Incrementar el contador de caramelos
     user.caramelos += 1;
-
-    if (user.caramelos === 3) {
+  
+    // Actualizar el tamaño del xuxemon
+    if (user.tamano === 'Pequeño' && user.caramelos >= 3) {
       user.tamano = 'Mediano';
-    } else if (user.caramelos === 8) { // 3 caramelos anteriores + 5 más
-      user.tamano = 'Grande';
+      user.caramelos = 0; // Reiniciar el contador de caramelos
+    } else if (user.tamano === 'Mediano' && user.caramelos >= 5) {
+      user.tamano = 'Max.Level';
+      user.caramelos = 0; // Reiniciar el contador de caramelos
+      user.maxLevelReached = true;
     }
   }
+  
+  
+
 }
 

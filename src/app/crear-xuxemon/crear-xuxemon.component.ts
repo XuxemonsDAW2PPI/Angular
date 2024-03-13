@@ -26,6 +26,7 @@ export class CrearXuxemonComponent implements OnInit {
     this.xuxemonForm = this.fb.group({
       nombre: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
+      tamano: ['', [Validators.required]],
       imagen: [''] // Opcional, según tu modelo de Xuxemon
     });
   }
