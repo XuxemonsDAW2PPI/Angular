@@ -13,7 +13,7 @@
       <p>{{ user.nombre }}</p>
       <p>{{ user.tipo }}</p>
       <p>{{ user.tamano }}</p>
-      <button (click)="alimentarXuxemon(user)" [disabled]="user.maxLevelReached">Alimentar</button> <!-- Deshabilitar el botón si maxLevelReached es true -->
+      <button *ngIf="!user.maxLevelReached" (click)="alimentarXuxemon(user)">Alimentar</button>
     </div>
   </div>
 </div>

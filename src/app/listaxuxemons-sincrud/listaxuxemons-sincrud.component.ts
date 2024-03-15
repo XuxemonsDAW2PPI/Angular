@@ -55,13 +55,13 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   getSize(tamano: string): string {
     switch (tamano) {
       case 'Pequeño':
-        return '100px'; // Tamaño inicial
+        return '75px'; // Tamaño inicial
       case 'Mediano':
-        return '150px'; // Tamaño mediano
-      case 'Max.Level':
+        return '125px'; // Tamaño mediano
+      case 'Grande':
         return '200px'; // Tamaño grande
       default:
-        return '100px'; // Tamaño por defecto
+        return '75px'; // Tamaño por defecto
     }
   }
   

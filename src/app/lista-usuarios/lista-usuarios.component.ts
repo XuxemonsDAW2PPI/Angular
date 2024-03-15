@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
 import { Xuxemon } from "../../models/Xuxemon";
 import { UsersService } from "../services/users.service";
 
