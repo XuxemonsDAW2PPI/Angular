@@ -8,17 +8,17 @@ import { Component } from '@angular/core';
 export class InventarioComponent {
   // Asegúrate de que las rutas a las imágenes coincidan con donde las has guardado en tu proyecto
   objetos = [
-    { id: 11, nombre: 'Monedas', imagen: 'assets/coins.png', cantidad: 200 },
-    { id: 1, nombre: 'Caramelos', imagen: 'assets/xuxes/xuxe1.png', cantidad: 100 },
-    { id: 2, nombre: 'Piruleta ', imagen: 'assets/xuxes/xuxe2.png', cantidad: 10 },
-    { id: 3, nombre: 'Piruleta Lazo', imagen: 'assets/xuxes/xuxe3.png', cantidad: 20 },
-    { id: 4, nombre: 'Algodon de Azucar', imagen: 'assets/xuxes/xuxe4.png', cantidad: 30 },
-    { id: 5, nombre: 'Tableta de Chocolate', imagen: 'assets/xuxes/xuxe5.png', cantidad: 40 },
-    { id: 6, nombre: 'Caramelo', imagen: 'assets/xuxes/xuxe6.png', cantidad: 50 },
-    { id: 7, nombre: 'Baston de Caramelo', imagen: 'assets/xuxes/xuxe7.png', cantidad: 60 },
-    { id: 8, nombre: 'Caramelo Largo', imagen: 'assets/xuxes/xuxe8.png', cantidad: 70 },
-    { id: 9, nombre: 'Carmelo Redondo y Largo', imagen: 'assets/xuxes/xuxe9.png', cantidad: 80 },
-    { id: 10, nombre: 'Surtido Caramelos', imagen: 'assets/xuxes/xuxe10.png', cantidad: 90 },
+    { id: 11, nombre: 'Monedas', imagen: 'assets/coins.png', cantidad: 0 },
+    { id: 1, nombre: 'Caramelos', imagen: 'assets/xuxes/xuxe1.png', cantidad: 0 },
+    { id: 2, nombre: 'Piruleta ', imagen: 'assets/xuxes/xuxe2.png', cantidad: 0 },
+    { id: 3, nombre: 'Piruleta Lazo', imagen: 'assets/xuxes/xuxe3.png', cantidad: 0 },
+    { id: 4, nombre: 'Algodon de Azucar', imagen: 'assets/xuxes/xuxe4.png', cantidad: 0 },
+    { id: 5, nombre: 'Tableta de Chocolate', imagen: 'assets/xuxes/xuxe5.png', cantidad: 0 },
+    { id: 6, nombre: 'Caramelo', imagen: 'assets/xuxes/xuxe6.png', cantidad: 0 },
+    { id: 7, nombre: 'Baston de Caramelo', imagen: 'assets/xuxes/xuxe7.png', cantidad: 0 },
+    { id: 8, nombre: 'Caramelo Largo', imagen: 'assets/xuxes/xuxe8.png', cantidad: 0 },
+    { id: 9, nombre: 'Carmelo Redondo y Largo', imagen: 'assets/xuxes/xuxe9.png', cantidad: 0 },
+    { id: 10, nombre: 'Surtido Caramelos', imagen: 'assets/xuxes/xuxe10.png', cantidad: 0 },
 ];
 
   incrementarCantidadAleatoria() {
@@ -28,6 +28,10 @@ export class InventarioComponent {
     const cantidadAAgregar = Math.floor(Math.random() * 10) + 1;
     objetoAleatorio.cantidad += cantidadAAgregar;
     console.log(`Se añadió ${cantidadAAgregar} a ${objetoAleatorio.nombre}. Nueva cantidad: ${objetoAleatorio.cantidad}`);
+  }
+
+  mostrarInventario(){
+    
   }
 
 }

@@ -68,4 +68,8 @@ export class UsersService {
   debugXuxemon(): Observable<any> {
     return this.http.get<any[]>('http://127.0.0.1:8000/api/Xuxemon/load');
   }
+
+  mostrarInventario(): Observable<any> {
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/Inventario/mostrarinv')
+  }
 }
