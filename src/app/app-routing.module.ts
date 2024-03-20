@@ -9,6 +9,7 @@ import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
+import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, // Redirige la ruta raíz al registro
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'menu', component: MenuComponent }, // Ruta para cualquier otro path no especificado
   { path: 'inventario', component: InventarioComponent }, // Agrega esta línea
   { path: 'xuxemons', component: ListaxuxemonsSincrudComponent }, // Agrega esta línea
+  { path: 'admin', component: VistaAdministradorComponent },
 
   // Modifica la ruta 'lista-usuarios' para incluir rutas hijas
   { 

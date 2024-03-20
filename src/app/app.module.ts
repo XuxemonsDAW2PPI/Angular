@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
 import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
+import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxe
     CrearXuxemonComponent,
     InventarioComponent,
     ListaxuxemonsSincrudComponent,
+    VistaAdministradorComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxe
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

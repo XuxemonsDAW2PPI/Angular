@@ -1,4 +1,11 @@
-<div *ngIf="!mostrarEditXuxemon && !mostrarCrearXuxemon">
+<div>
+  <h3>Selecciona el tamaño predeterminado para los Xuxemons:</h3>
+  <select [(ngModel)]="tamanoSeleccionado">
+    <option value="Pequeño">Pequeño</option>
+    <option value="Mediano">Mediano</option>
+    <option value="Grande">Grande</option>
+  </select>
+  <div *ngIf="!mostrarEditXuxemon && !mostrarCrearXuxemon">
   <button mat-button (click)="debugXuxemon()">Debug</button>
   <button mat-button (click)="crearXuxemon()">Crear Xuxemon</button>
   <div *ngIf="usersInPage.length > 0; " class="users-grid">
@@ -11,6 +18,7 @@
        }">
         <p>{{ user.nombre }}</p>
         <p>{{ user.tipo }}</p>
+        <p>{{ user.tamano }}</p>
         <!-- Botones de Editar y Eliminar -->
         <button mat-button (click)="editarXuxemon(user)">Editar</button>
         <button mat-button (click)="eliminarXuxemon(user)">Eliminar</button>

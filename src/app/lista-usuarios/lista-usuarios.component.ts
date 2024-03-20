@@ -12,6 +12,7 @@ export class ListaUsuariosComponent implements OnInit {
   mostrarEditXuxemon: boolean = false;
   mostrarCrearXuxemon: boolean = false;
   xuxemonSeleccionado: any; // Puedes cambiar esto según tu implementación
+  tamanoSeleccionado: string = ''; // Valor predeterminado del tamaño seleccionado
 
   editarXuxemon(user: any): void {
     this.xuxemonSeleccionado = user;
@@ -65,7 +66,7 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   debugXuxemon(): void {
-    this.userService.debugXuxemon().subscribe(
+    this.userService.debugXuxemon(this.tamanoSeleccionado).subscribe(
       response => {
         console.log('Xuxemons creados correctamente:', response);
         this.loadUsers();
@@ -76,4 +77,5 @@ export class ListaUsuariosComponent implements OnInit {
       }
     );
   }
+  
 }

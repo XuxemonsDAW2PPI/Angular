@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     this.service.register(this.usuario).subscribe(response => {
-      // Manejar la respuesta del servidor si es necesario
+      alert('Registro exitoso');
       this.router.navigate(['/login']);
     }, error => {
       alert(error.message || 'Ha ocurrido un error')

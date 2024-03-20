@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.service.login(this.usuario).subscribe(response => {
-      // Manejar la respuesta del servidor si es necesario
+      alert('Inicio de sesión exitoso');
       this.router.navigate(['/menu']);
     }, error => {
       alert(error.message || 'Ha ocurrido un error')
