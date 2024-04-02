@@ -36,7 +36,8 @@ export class UsersService {
   }
 
   login(data: Login ): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/User/login', data, {
+    console.log(data)
+    return this.http.post('http://127.0.0.1:8000/api/login', data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
