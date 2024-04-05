@@ -36,11 +36,12 @@ export class EditXuxemonComponent implements OnInit {
       this.userService.editXuxemon(this.xuxemonForm.value, this.xuxemon.id)
         .subscribe(response => {
           console.log('Xuxemon actualizado correctamente:', response);
+          alert('Xuxemon actualizado correctamente');
+          this.router.navigate(['/xuxemons']);
 
         }, error => {
           console.error('Error al actualizar el xuxemon:', error);
         });
-      // Aquí iría la lógica para actualizar el xuxemon, por ejemplo, mediante un servicio
     }
   }
   

@@ -56,8 +56,8 @@ export class ListaUsuariosComponent implements OnInit {
     this.userService.eliminarXuxemon(user.id).subscribe(
       response => {
         console.log('Xuxemon eliminado correctamente:', response);
+        alert('Xuxemon eliminado correctamente');
         this.loadUsers();
-        // Aquí puedes agregar lógica adicional, como volver a cargar la lista de usuarios
       },
       error => {
         console.error('Error al eliminar el xuxemon:', error);
