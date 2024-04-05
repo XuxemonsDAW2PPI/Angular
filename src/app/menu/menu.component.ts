@@ -11,11 +11,11 @@ export class MenuComponent {
   constructor(private router: Router) {}
 
   navigateToUsers() {
-    this.router.navigate(['/lista-usuarios']);
+    this.router.navigate(['/xuxemons']);
   }
 
-  navigateToInventory() { // Añade este método
-    this.router.navigate(['/inventario']); // Utiliza la ruta que definiste
+  navigateToInventory() { 
+    this.router.navigate(['/inventario']); 
   }
 
 }

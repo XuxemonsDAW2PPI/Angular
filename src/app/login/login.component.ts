@@ -28,10 +28,17 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.service.login(this.usuario).subscribe(response => {
       alert('Inicio de sesión exitoso');
-      this.router.navigate(['/menu']);
+
+      if (response.usertype === 'Admin') {
+        this.router.navigate(['/lista-usuarios']);
+      } else if (response.usertype === 'Usuario') {
+        this.router.navigate(['/menu']);
+      } else {
+        alert('Tipo de usuario no reconocido');
+      }
     }, error => {
       alert(error.message || 'Ha ocurrido un error')
-    });
-    
+    });  
   }
+  
 }
