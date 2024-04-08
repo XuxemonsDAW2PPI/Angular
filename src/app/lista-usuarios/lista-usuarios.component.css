@@ -68,3 +68,52 @@
 .user-info a:hover {
   text-decoration: underline; /* Añade subrayado al pasar el mouse sobre los enlaces */
 }
+
+/*CAMPOS DE CONFIGURACION ADMIN*/
+.configuracion-administrador {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  max-width: 100%; /* Ajusta esto según el contenedor padre */
+}
+
+.configuracion-administrador h3, .configuracion-administrador h4 {
+  color: #333;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Ajusta la alineación vertical de los elementos */
+}
+
+.selector-container {
+  flex: 1; /* Ocupa espacio proporcional en el contenedor */
+  margin-right: 20px; /* Ajusta según necesidad para separación entre elementos */
+}
+
+.configuracion-tamanos {
+  flex: 2; /* Ajusta este valor según sea necesario para manejar el ancho */
+}
+
+.selector-tamano, .input-configuracion {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.selector-tamano:focus, .input-configuracion:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.campo-configuracion {
+  margin-bottom: 16px;
+}

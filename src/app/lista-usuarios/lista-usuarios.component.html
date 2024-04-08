@@ -1,10 +1,31 @@
 <div>
-  <h3>Selecciona el tamaño predeterminado para los Xuxemons:</h3>
-  <select [(ngModel)]="tamanoSeleccionado">
-    <option value="Pequeño">Pequeño</option>
-    <option value="Mediano">Mediano</option>
-    <option value="Grande">Grande</option>
-  </select>
+  <div class="configuracion-administrador">
+    <h3>Tamaño predeterminado Xuxemons</h3>
+    <div class="contenedor-flex">
+      <div class="contenedor-selector">
+        <select [(ngModel)]="tamanoSeleccionado" class="selector-tamano">
+          <option value="Pequeño">Pequeño</option>
+          <option value="Mediano">Mediano</option>
+          <option value="Grande">Grande</option>
+        </select>
+      </div>
+  
+      <div class="contenedor-configuracion">
+        <h4>Configuración de tamaños:</h4>
+        <div class="campo-configuracion">
+          <label for="xuxesParaMediano">Cantidad de xuxes para subir a Mediano:</label>
+          <input type="number" id="xuxesParaMediano" [(ngModel)]="xuxesParaMediano" min="1" class="input-configuracion">
+        </div>
+        <div class="campo-configuracion">
+          <label for="xuxesParaGrande">Cantidad de xuxes para subir a Grande:</label>
+          <input type="number" id="xuxesParaGrande" [(ngModel)]="xuxesParaGrande" min="1" class="input-configuracion">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
   <div *ngIf="!mostrarEditXuxemon && !mostrarCrearXuxemon">
   <button mat-button (click)="debugXuxemon()">Debug</button>
   <button mat-button (click)="crearXuxemon()">Crear Xuxemon</button>
@@ -27,5 +48,5 @@
   </div>
 </div>
 
-<app-editar-xuxemon *ngIf="mostrarEditXuxemon" [xuxemon]="xuxemonSeleccionado"></app-editar-xuxemon>
-<app-crear-xuxemon *ngIf="mostrarCrearXuxemon"></app-crear-xuxemon>
+<app-editar-xuxemon *ngIf="mostrarEditXuxemon" [xuxemon]="xuxemonSeleccionado">Editar Xuxemons</app-editar-xuxemon>
+<app-crear-xuxemon *ngIf="mostrarCrearXuxemon">Crear Xuxemons</app-crear-xuxemon>

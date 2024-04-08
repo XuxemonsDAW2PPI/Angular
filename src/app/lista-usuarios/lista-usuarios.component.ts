@@ -14,6 +14,10 @@ export class ListaUsuariosComponent implements OnInit {
   xuxemonSeleccionado: any; // Puedes cambiar esto según tu implementación
   tamanoSeleccionado: string = ''; // Valor predeterminado del tamaño seleccionado
 
+
+  xuxesParaMediano: any;
+  xuxesParaGrande: any;
+
   editarXuxemon(user: any): void {
     this.xuxemonSeleccionado = user;
     this.mostrarEditXuxemon = !this.mostrarEditXuxemon;
