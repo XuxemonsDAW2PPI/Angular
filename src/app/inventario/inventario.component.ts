@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventario',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent {
+
+  constructor(private router: Router) {}
   // Asegúrate de que las rutas a las imágenes coincidan con donde las has guardado en tu proyecto
   objetos = [
     { id: 11, nombre: 'Monedas', imagen: 'assets/coins.png', cantidad: 0 },
@@ -32,6 +35,10 @@ export class InventarioComponent {
 
   mostrarInventario(){
     
+  }
+
+  VermisXuxemons() {
+    this.router.navigate(['/xuxemons']);
   }
 
 }

@@ -1,0 +1,91 @@
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px; 
+    padding: 20px; 
+  }
+  
+  .user-card {
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    position: relative;
+  }
+  
+  .user-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2); 
+  }
+  
+  .user-image {
+    width: 120px; 
+    height: 120px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    margin-bottom: 15px; 
+  }
+  
+  .user-info {
+    text-align: center; 
+    font-size: 16px; 
+    color: #333; 
+    padding: 10px; /* Añade padding para evitar que el texto toque los bordes del fondo */
+    margin-top: 10px; /* Añade un margen en la parte superior para separar del elemento anterior */
+    width: calc(100% - 20px); /* Ajusta el ancho para considerar el padding */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total del elemento */
+    border-radius: 4px; /* Bordes redondeados para el fondo */
+  }
+  
+  /* Define colores para cada tipo */
+  .tipo-tierra {
+    background-color:#8B4513 ;
+    color: white;
+  }
+  
+  .tipo-aire {
+    background-color:#87CEEB ;
+    color: white;
+  }
+  
+  .tipo-agua {
+    background-color: #0d3250;
+  
+    color: white; /* Azul marino */
+  }
+  
+  
+  /* Mejora la apariencia de los enlaces dentro de .user-info */
+  .user-info a {
+    color: #007bff; /* Color para enlaces */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+  }
+  
+  .user-info a:hover {
+    text-decoration: underline; /* Añade subrayado al pasar el mouse sobre los enlaces */
+  }
+
+  
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px; /* Altura de la barra de progreso */
+    background-color: rgb(37, 168, 70); /* Color de fondo de la barra */
+    border: rgb(0, 0, 0);
+  }
+
+  .user-image.medium {
+    width: 150px; /* Tamaño medio */
+    height: 150px;
+  }
+  
+  .user-image.large {
+    width: 200px; /* Tamaño grande */
+    height: 200px;
+  }

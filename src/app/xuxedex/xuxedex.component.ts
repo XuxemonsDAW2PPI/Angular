@@ -4,14 +4,14 @@ import { Xuxemon } from "../../models/Xuxemon";
 import { UsersService } from "../services/users.service";
 
 @Component({
-  selector: 'app-listaxuxemons-sincrud',
-  templateUrl: './listaxuxemons-sincrud.component.html',
-  styleUrls: ['./listaxuxemons-sincrud.component.css']
+  selector: 'app-xuxedex',
+  templateUrl: './xuxedex.component.html',
+  styleUrls: ['./xuxedex.component.css']
 })
-export class ListaxuxemonsSincrudComponent implements OnInit {
+export class XuxedexComponent implements OnInit{
 
   currentPage: number = 1;
-  pageSize: number = 6; // Mostrar solo 6 Xuxemons
+  pageSize: number = 48; // Ajusta según la necesidad de mostrar filas de 6
   usersInPage: Xuxemon[] = [];
   allUsers: Xuxemon[] = [];
 
@@ -25,22 +25,12 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     this.userService.loadUsers()
       .subscribe(data => {
         this.allUsers = data;
-        this.generateRandomUsers();
+        this.usersInPage = data;
+        console.log(this.allUsers);
+        // Aquí puedes llamar a cualquier método adicional para procesar los datos, si es necesario
       }, error => {
         console.error('Error al cargar los usuarios desde la API:', error);
       });
-  }
-
-  generateRandomUsers() {
-    this.usersInPage = [];
-    for (let i = 0; i < this.pageSize; i++) {
-      const randomIndex = Math.floor(Math.random() * this.allUsers.length);
-      const randomUser = this.allUsers[randomIndex];
-      for (let j = 0; j < 3; j++) { 
-        const clonedUser = { ...randomUser }; 
-        this.usersInPage.push(clonedUser);
-      }
-    }
   }
 
   updateUsersBasedOnPage() {
@@ -98,4 +88,6 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   
 
 }
+
+
 

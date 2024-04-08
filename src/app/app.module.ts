@@ -24,6 +24,7 @@ import { CrearXuxemonComponent } from './crear-xuxemon/crear-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
+import { XuxedexComponent } from './xuxedex/xuxedex.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
     InventarioComponent,
     ListaxuxemonsSincrudComponent,
     VistaAdministradorComponent,
+    XuxedexComponent,
   ],
   imports: [
     BrowserModule,

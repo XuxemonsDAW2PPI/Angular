@@ -11,7 +11,7 @@ export class MenuComponent {
   constructor(private router: Router) {}
 
   navigateToUsers() {
-    this.router.navigate(['/xuxemons']);
+    this.router.navigate(['/xuxedex']);
   }
 
   navigateToInventory() { 
