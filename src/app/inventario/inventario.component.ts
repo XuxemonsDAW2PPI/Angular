@@ -1,44 +1,56 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
-export class InventarioComponent {
+export class InventarioComponent implements OnInit {
 
-  constructor(private router: Router) {}
-  // Asegúrate de que las rutas a las imágenes coincidan con donde las has guardado en tu proyecto
-  objetos = [
-    { id: 11, nombre: 'Monedas', imagen: 'assets/coins.png', cantidad: 0 },
-    { id: 1, nombre: 'Caramelos', imagen: 'assets/xuxes/xuxe1.png', cantidad: 0 },
-    { id: 2, nombre: 'Piruleta ', imagen: 'assets/xuxes/xuxe2.png', cantidad: 0 },
-    { id: 3, nombre: 'Piruleta Lazo', imagen: 'assets/xuxes/xuxe3.png', cantidad: 0 },
-    { id: 4, nombre: 'Algodon de Azucar', imagen: 'assets/xuxes/xuxe4.png', cantidad: 0 },
-    { id: 5, nombre: 'Tableta de Chocolate', imagen: 'assets/xuxes/xuxe5.png', cantidad: 0 },
-    { id: 6, nombre: 'Caramelo', imagen: 'assets/xuxes/xuxe6.png', cantidad: 0 },
-    { id: 7, nombre: 'Baston de Caramelo', imagen: 'assets/xuxes/xuxe7.png', cantidad: 0 },
-    { id: 8, nombre: 'Caramelo Largo', imagen: 'assets/xuxes/xuxe8.png', cantidad: 0 },
-    { id: 9, nombre: 'Carmelo Redondo y Largo', imagen: 'assets/xuxes/xuxe9.png', cantidad: 0 },
-    { id: 10, nombre: 'Surtido Caramelos', imagen: 'assets/xuxes/xuxe10.png', cantidad: 0 },
-];
+  inventario: any;
+  userId: number;
 
-  incrementarCantidadAleatoria() {
-    // Selecciona un objeto al azar.
-    const objetoAleatorio = this.objetos[Math.floor(Math.random() * this.objetos.length)];
-    // Incrementa la cantidad de ese objeto en un número aleatorio entre 1 y 10.
-    const cantidadAAgregar = Math.floor(Math.random() * 10) + 1;
-    objetoAleatorio.cantidad += cantidadAAgregar;
-    console.log(`Se añadió ${cantidadAAgregar} a ${objetoAleatorio.nombre}. Nueva cantidad: ${objetoAleatorio.cantidad}`);
+  constructor(private router: Router, private route: ActivatedRoute, private UsersService: UsersService) { }
+
+  ngOnInit(): void {
+    this.getUserIdFromUrl();
   }
 
-  mostrarInventario(){
-    
+  getUserIdFromUrl() {
+    this.route.paramMap.subscribe(params => {
+      if (params !== null) {
+        const userIdParam = params.get('userId');
+        if (userIdParam !== null) {
+          this.userId = +userIdParam;
+          this.getInventario(); 
+        } else {
+          console.error('ID de usuario no encontrada en la URL');
+        }
+      }
+    });
+  }
+
+  getInventario() {
+    this.UsersService.getInventario(this.userId)
+      .subscribe(
+        data => {
+          if (data === null || data.length === 0) {
+            console.warn('No se encontró inventario para este usuario.');
+          } else {
+            this.inventario = data;
+          }
+        },
+        error => {
+          console.log('Error al obtener el inventario:', error);
+        }
+      );
   }
 
   VermisXuxemons() {
     this.router.navigate(['/xuxemons']);
   }
-
 }
+
+

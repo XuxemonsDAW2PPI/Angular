@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; // Importa Router para la navegación
+import { Router } from '@angular/router';
 import { Login } from "../../models/Login";
 import { UsersService } from '../services/users.service';
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  constructor(private fb: FormBuilder, private router: Router, private service: UsersService ) {} // Inyecta Router para usarlo en la navegación
+  constructor(private fb: FormBuilder, private router: Router, private service: UsersService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -28,11 +28,15 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.service.login(this.usuario).subscribe(response => {
       alert('Inicio de sesión exitoso');
-
+  
       if (response.usertype === 'Admin') {
         this.router.navigate(['/lista-usuarios']);
       } else if (response.usertype === 'Usuario') {
-        this.router.navigate(['/menu']);
+        if (response.id) { 
+          this.router.navigate(['/menu', response.id]);
+        } else {
+          console.error('El ID del usuario no está definido');
+        }
       } else {
         alert('Tipo de usuario no reconocido');
       }

@@ -1,17 +1,22 @@
-<div class="container">
-    <h2 class="titulo-inventario">INVENTARIO</h2>
-    <button (click)="incrementarCantidadAleatoria()">Añadir Cantidad Aleatoria</button>
-    <button (click)="VermisXuxemons()">Ver mis Xuxemons</button>
-
-    <div class="tarjetas-objetos">
-      <div *ngFor="let objeto of objetos" class="card">
-        <img class="card-img-top" [src]="objeto.imagen" [alt]="objeto.nombre">
-        <div class="card-body">
-          <h5 class="card-title">{{ objeto.nombre }}</h5>
-          <p class="card-cantidad">Cantidad: {{ objeto.cantidad }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngIf="inventario">
+  <h1>Inventario del usuario {{ userId }}</h1>
+  <ul>
+    <li *ngFor="let item of inventario">
+      <strong>Monedas:</strong> {{ item.monedas }}, 
+      <strong>Caramelos:</strong> {{ item.caramelos }},
+      <strong>Piruleta:</strong> {{ item.piruleta }}, 
+      <strong>Piruletal:</strong> {{ item.piruletal }},
+      <strong>Algodon:</strong> {{ item.algodon }}, 
+      <strong>Tableta de chocolate:</strong> {{ item.tabletachoco }},
+      <strong>Caramelo:</strong> {{ item.caramelo }},
+      <strong>Baston:</strong> {{ item.baston }}, 
+      <strong>Caramelo largo:</strong> {{ item.caramelolargo }}, 
+      <strong>Caramelo redondo:</strong> {{ item.carameloredondo }},
+      <strong>Surtido:</strong> {{ item.surtido }},
+    </li>
+  </ul>
+</div>
   
+
+
   
