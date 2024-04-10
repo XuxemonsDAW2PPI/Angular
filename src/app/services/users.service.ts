@@ -85,6 +85,12 @@ export class UsersService {
     return this.http.post<any>(url, { inventario });
   }*/
 
+  restarCantidadObjeto(userId: number, itemName: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/${userId}/${itemName}/restar`;
+    return this.http.post<any>(url, {});
+}
+
+
   updateXuxemonSize(newSize: string): Observable<any> {
     const url = 'http://127.0.0.1:8000/api/Xuxemon/actualizar-tamano'; // La URL debe coincidir con la ruta en tu API Laravel
     const data = { nuevoTamano: newSize }; // Enviar el nuevo tamaño como parte del cuerpo de la solicitud

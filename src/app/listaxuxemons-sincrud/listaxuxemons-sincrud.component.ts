@@ -88,7 +88,6 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   }
 
   alimentarXuxemon(user: Xuxemon) {
-    // Lógica de alimentar al xuxemon
 
     // Establecer mostrarInventario en true
     this.mostrarInventario = true;
@@ -124,6 +123,14 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       user.caramelos = 0; // Reiniciar el contador de caramelos
       user.maxLevelReached = true;
     }
+  }
+
+  cerrarInventario() {
+    this.mostrarInventario = false;
+  }
+  
+  evitarCierre(event: MouseEvent) {
+    event.stopPropagation(); // Evitar que el clic se propague al contenedor exterior
   }
 
 }
