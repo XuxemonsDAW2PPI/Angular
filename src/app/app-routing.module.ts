@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta de login
   { path: 'menu/:userId', component: MenuComponent }, // Ruta para cualquier otro path no especificado
   { path: 'inventario/:userId', component: InventarioComponent }, // Agrega esta línea
-  { path: 'xuxemons', component: ListaxuxemonsSincrudComponent }, // Agrega esta línea
+  { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
   { path: 'xuxedex', component: XuxedexComponent },
 
   // Modifica la ruta 'lista-usuarios' para incluir rutas hijas

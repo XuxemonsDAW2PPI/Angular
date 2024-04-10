@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from "rxjs";
 import { Xuxemon } from "../../models/Xuxemon";
 import { UsersService } from "../services/users.service";
@@ -15,10 +16,21 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   usersInPage: Xuxemon[] = [];
   allUsers: Xuxemon[] = [];
 
-  constructor(private userService: UsersService) { }
+  userId: number;
+  mostrarInventario: boolean = false;
+  inventario: any;
+
+  
+  constructor(private userService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loadUsers();
+    this.route.paramMap.subscribe(params => {
+      const userIdParam = params.get('userId');
+      if (userIdParam !== null) {
+        this.userId = +userIdParam;
+      }
+    });
   }
   
   loadUsers(): void {
@@ -74,9 +86,28 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         return '75px'; // Tamaño por defecto
     }
   }
-  
 
   alimentarXuxemon(user: Xuxemon) {
+    // Lógica de alimentar al xuxemon
+
+    // Establecer mostrarInventario en true
+    this.mostrarInventario = true;
+
+    // Llamar al método getInventario() para actualizar el inventario
+    this.userService.getInventario(this.userId)
+      .subscribe(
+        data => {
+          if (data === null || data.length === 0) {
+            console.warn('No se encontró inventario para este usuario.');
+          } else {
+            this.inventario = data;
+          }
+        },
+        error => {
+          console.log('Error al obtener el inventario:', error);
+        }
+      );
+    
     if (!user.caramelos) {
       user.caramelos = 0;
     }
@@ -94,8 +125,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       user.maxLevelReached = true;
     }
   }
-  
-  
 
 }
+
 

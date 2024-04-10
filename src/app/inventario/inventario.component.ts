@@ -49,7 +49,21 @@ export class InventarioComponent implements OnInit {
   }
 
   VermisXuxemons() {
-    this.router.navigate(['/xuxemons']);
+    this.router.navigate(['/xuxemons', this.userId]);
+  }
+
+  aumentarCantidadAleatoria() {
+    this.UsersService.aumentarCantidadAleatoria(this.userId)
+      .subscribe(
+        response => {
+          console.log(response); 
+          alert(response);
+          this.getInventario(); 
+        },
+        error => {
+          console.log('Error al aumentar la cantidad aleatoria:', error);
+        }
+      );
   }
 }
 

@@ -17,3 +17,21 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="mostrarInventario">
+  <ul>
+    <li *ngFor="let item of inventario">
+      <strong>Monedas:</strong> {{ item.monedas }}, 
+      <strong>Caramelos:</strong> {{ item.caramelos }},
+      <strong>Piruleta:</strong> {{ item.piruleta }}, 
+      <strong>Piruletal:</strong> {{ item.piruletal }},
+      <strong>Algodon:</strong> {{ item.algodon }}, 
+      <strong>Tableta de chocolate:</strong> {{ item.tabletachoco }},
+      <strong>Caramelo:</strong> {{ item.caramelo }},
+      <strong>Baston:</strong> {{ item.baston }}, 
+      <strong>Caramelo largo:</strong> {{ item.caramelolargo }}, 
+      <strong>Caramelo redondo:</strong> {{ item.carameloredondo }},
+      <strong>Surtido:</strong> {{ item.surtido }},
+    </li>
+  </ul>
+</div>

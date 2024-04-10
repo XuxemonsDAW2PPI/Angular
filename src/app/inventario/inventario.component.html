@@ -1,5 +1,7 @@
 <div *ngIf="inventario">
   <h1>Inventario del usuario {{ userId }}</h1>
+  <button (click)="aumentarCantidadAleatoria()">Añadir cantidad aleatoria</button>
+  <button (click)="VermisXuxemons()">Mis Xuxemons</button>
   <ul>
     <li *ngFor="let item of inventario">
       <strong>Monedas:</strong> {{ item.monedas }}, 
@@ -16,7 +18,7 @@
     </li>
   </ul>
 </div>
-  
+
 
 
   

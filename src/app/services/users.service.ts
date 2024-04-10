@@ -75,6 +75,11 @@ export class UsersService {
     return this.http.get<any>(`http://127.0.0.1:8000/api/Inventario/${userId}`);
   }
 
+  aumentarCantidadAleatoria(userId: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/aumentar`;
+    return this.http.post<any>(url, {});
+  }
+
   /*updateInventario(userId: number, inventario: any[]) {
     const url = `http://127.0.0.1:8000/api/Inventario/${userId}/update`;
     return this.http.post<any>(url, { inventario });
