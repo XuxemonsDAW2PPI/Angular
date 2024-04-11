@@ -9,6 +9,7 @@ import { UsersService } from "../services/users.service";
 })
 export class ListaUsuariosComponent implements OnInit {
 
+
   mostrarEditXuxemon: boolean = false;
   mostrarCrearXuxemon: boolean = false;
   xuxemonSeleccionado: any; // Puedes cambiar esto según tu implementación
@@ -37,7 +38,7 @@ export class ListaUsuariosComponent implements OnInit {
   ngOnInit() {
     this.loadUsers();
   }
-  
+
   loadUsers(): void {
     this.userService.loadUsers()
       .subscribe(data => {
@@ -78,6 +79,31 @@ export class ListaUsuariosComponent implements OnInit {
       },
       error => {
         console.error('Error al crear Xuxemons:', error);
+      }
+    );
+  }
+
+
+  confirmarMediano(): void {
+    this.userService.actualizarConfiguracionMediano(this.xuxesParaMediano).subscribe(
+      (      response: any) => {
+        console.log('Configuración actualizada:', response);
+        alert('Configuración de Mediano actualizada correctamente');
+      },
+      (      error: any) => {
+        console.error('Error al actualizar la configuración:', error);
+      }
+    );
+  }
+  
+  confirmarGrande(): void {
+    this.userService.actualizarConfiguracionGrande(this.xuxesParaGrande).subscribe(
+      (      response: any) => {
+        console.log('Configuración actualizada:', response);
+        alert('Configuración de Grande actualizada correctamente');
+      },
+      (      error: any) => {
+        console.error('Error al actualizar la configuración:', error);
       }
     );
   }
