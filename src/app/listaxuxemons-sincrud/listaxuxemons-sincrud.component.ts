@@ -133,6 +133,19 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     event.stopPropagation(); // Evitar que el clic se propague al contenedor exterior
   }
 
+  disminuirCantidad(objeto: string) {
+    this.userService.disminuirCantidadObjeto(this.userId, objeto)
+      .subscribe(
+        response => {
+          console.log('Cantidad de ' + objeto + ' disminuida en 1 unidad');
+          
+        },
+        error => {
+          console.error('Error al disminuir la cantidad de ' + objeto + ':', error);
+        }
+      );
+  }
+  
 }
 
 

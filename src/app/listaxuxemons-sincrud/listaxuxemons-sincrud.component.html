@@ -22,17 +22,16 @@
   <div class="inventario" (click)="evitarCierre($event)">
     <ul>
       <li *ngFor="let item of inventario">
-        <strong>Monedas:</strong> {{ item.monedas }}, 
-        <strong>Caramelos:</strong> {{ item.caramelos }},
-        <strong>Piruleta:</strong> {{ item.piruleta }}, 
-        <strong>Piruletal:</strong> {{ item.piruletal }},
-        <strong>Algodon:</strong> {{ item.algodon }}, 
-        <strong>Tableta de chocolate:</strong> {{ item.tabletachoco }},
-        <strong>Caramelo:</strong> {{ item.caramelo }},
-        <strong>Baston:</strong> {{ item.baston }}, 
-        <strong>Caramelo largo:</strong> {{ item.caramelolargo }}, 
-        <strong>Caramelo redondo:</strong> {{ item.carameloredondo }},
-        <strong>Surtido:</strong> {{ item.surtido }},
+        <button (click)="disminuirCantidad('caramelos')">Caramelos: {{ item.caramelos }}</button>
+        <button (click)="disminuirCantidad('piruleta')">Piruleta: {{ item.piruleta }}</button>
+        <button (click)="disminuirCantidad('piruletal')">Piruletal: {{ item.piruletal }}</button>
+        <button (click)="disminuirCantidad('algodon')">Algodon: {{ item.algodon }}</button> 
+        <button (click)="disminuirCantidad('tabletachoco')">Tableta de Chocolate: {{ item.tabletachoco }}</button>
+        <button (click)="disminuirCantidad('caramelo')">Caramelo: {{ item.caramelo }}</button>
+        <button (click)="disminuirCantidad('baston')">Bastón: {{ item.baston }}</button> 
+        <button (click)="disminuirCantidad('caramelolargo')">Caramelo largo: {{ item.caramelolargo }}</button> 
+        <button (click)="disminuirCantidad('carameloredondo')">Caramelo redondo: {{ item.carameloredondo }}</button>
+        <button (click)="disminuirCantidad('surtido')">Surtido: {{ item.surtido }}</button>
       </li>
     </ul>
   </div>
