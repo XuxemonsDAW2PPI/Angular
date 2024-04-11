@@ -114,6 +114,33 @@
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+.contenedor-configuracion h4 {
+  margin-bottom: 10px;
+}
+
 .campo-configuracion {
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.campo-configuracion label {
+  margin-right: 10px;
+}
+
+.input-configuracion {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.btn-confirmacion {
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-confirmacion:hover {
+  background-color: #0056b3;
 }

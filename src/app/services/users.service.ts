@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: 'root'
 })
 export class UsersService {
+  
   allUsers: any[] = [];
 
   constructor(private http: HttpClient) {
@@ -93,6 +94,21 @@ export class UsersService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
+
+
+
+  actualizarConfiguracionMediano(cantidad: number) {
+    const url = 'http://127.0.0.1:8000/api/sm_med'; // Asegúrate de que esta ruta es correcta
+    return this.http.post(url, {sm_med: cantidad});
+  }
+
+  actualizarConfiguracionGrande(cantidad: number) {
+    const url = 'http://127.0.0.1:8000/api/med_big'; // Asegúrate de que esta ruta es correcta
+    return this.http.post(url, {med_big: cantidad});
+  }
+
+ // parametros();
+
 
 
 
