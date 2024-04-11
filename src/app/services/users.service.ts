@@ -104,11 +104,13 @@ export class UsersService {
 
 
   actualizarConfiguracionMediano(cantidad: number) {
-    return this.http.post('/api/sm_med', {sm_med: cantidad});
+    const url = 'http://127.0.0.1:8000/api/sm_med'; // Asegúrate de que esta ruta es correcta
+    return this.http.post(url, {sm_med: cantidad});
   }
 
   actualizarConfiguracionGrande(cantidad: number) {
-    return this.http.post('/api/med_big', {med_big: cantidad});
+    const url = 'http://127.0.0.1:8000/api/med_big'; // Asegúrate de que esta ruta es correcta
+    return this.http.post(url, {med_big: cantidad});
   }
 
  // parametros();
