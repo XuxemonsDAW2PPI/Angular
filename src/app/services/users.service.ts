@@ -33,6 +33,7 @@ export class UsersService {
   register(data: Usuario): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/User/store', data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      
     });
   }
 
