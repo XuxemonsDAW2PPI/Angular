@@ -86,14 +86,19 @@ export class UsersService {
     return this.http.post<any>(url, {});
   }
 
-  updateXuxemonSize(newSize: string): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/Xuxemon/actualizar-tamano'; // La URL debe coincidir con la ruta en tu API Laravel
-    const data = { nuevoTamano: newSize }; // Enviar el nuevo tamaño como parte del cuerpo de la solicitud
+  getXuxemonsDelUser(userId: number): Observable<any[]> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/mostrar/${userId}`;
+    return this.http.get<any>(url, {});
+  }
+
+  /*updateXuxemonSize(newSize: string): Observable<any> {
+    const url = 'http://127.0.0.1:8000/api/Xuxemon/actualizar-tamano'; 
+    const data = { nuevoTamano: newSize }; 
 
     return this.http.post(url, data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
-  }
+  }*/
 
 
 

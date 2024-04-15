@@ -7,4 +7,5 @@ maxLevelReached: any;
   archivo: string;
   tamano: string;
   caramelos: number;
+  estado: string;
 }

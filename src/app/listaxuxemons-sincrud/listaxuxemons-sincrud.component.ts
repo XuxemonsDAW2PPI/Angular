@@ -38,6 +38,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       .subscribe(data => {
         this.allUsers = data;
         this.generateRandomUsers();
+        this.getXuxemonsDelUser(this.userId);
       }, error => {
         console.error('Error al cargar los usuarios desde la API:', error);
       });
@@ -144,6 +145,20 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
           console.error('Error al disminuir la cantidad de ' + objeto + ':', error);
         }
       );
+  }
+
+  getXuxemonsDelUser(userId: number): void {
+    this.userService.getXuxemonsDelUser(userId)
+      .subscribe(data => {
+        const userXuxemons = data;
+        this.usersInPage = [...userXuxemons, ...this.usersInPage];
+      }, error => {
+        console.error('Error al obtener los xuxemons del usuario:', error);
+      });
+  }
+
+  getClassPorEstado(status: string): string {
+    return status === 'Activo' ? 'user-card-active' : 'user-card';
   }
   
 }

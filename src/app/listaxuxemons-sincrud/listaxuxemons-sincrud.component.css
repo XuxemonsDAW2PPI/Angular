@@ -22,6 +22,11 @@
     transform: translateY(-5px); 
     box-shadow: 0 10px 15px rgba(0,0,0,0.2); 
   }
+
+  .user-card-active {
+    border: 1px solid #ccc;
+    background-color: #818181; /* Color gris */
+  }
   
   .user-image {
     width: 120px; 

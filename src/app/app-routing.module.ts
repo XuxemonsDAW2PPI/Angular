@@ -12,24 +12,23 @@ import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxe
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/register', pathMatch: 'full' }, // Redirige la ruta raíz al registro
-  { path: 'register', component: RegisterComponent }, // Ruta de registro
-  { path: 'login', component: LoginComponent }, // Ruta de login
-  { path: 'menu/:userId', component: MenuComponent }, // Ruta para cualquier otro path no especificado
-  { path: 'inventario/:userId', component: InventarioComponent }, // Agrega esta línea
+  { path: '', redirectTo: '/register', pathMatch: 'full' }, 
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }, 
+  { path: 'menu/:userId', component: MenuComponent }, 
+  { path: 'inventario/:userId', component: InventarioComponent }, 
   { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
   { path: 'xuxedex', component: XuxedexComponent },
 
-  // Modifica la ruta 'lista-usuarios' para incluir rutas hijas
   { 
-    path: 'lista-usuarios', component: ListaUsuariosComponent, // Componente padre
+    path: 'lista-usuarios', component: ListaUsuariosComponent, 
     children: [ 
-      { path: 'crear-xuxemon', component: CrearXuxemonComponent }, // Ruta hija para crear
-      { path: 'edit-xuxemon/:id', component: EditXuxemonComponent }, // Ruta hija para editar
+      { path: 'crear-xuxemon', component: CrearXuxemonComponent }, 
+      { path: 'edit-xuxemon/:id', component: EditXuxemonComponent },
     ] 
   },
 
-  { path: '**', component: ErrorComponent } // Ruta para cualquier otro path no especificado
+  { path: '**', component: ErrorComponent } 
 ];
 
 
