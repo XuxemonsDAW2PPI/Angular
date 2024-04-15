@@ -1,0 +1,73 @@
+/* Estilos generales para la página */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para el contenedor principal */
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Estiliza los inputs y botones para ser más amigables */
+  input[type="text"], button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Secciones claramente definidas */
+  .section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Estilos para las listas de amigos y solicitudes */
+  .list-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .list-item button {
+    float: right;
+  }
+  
+  /* Limpiar floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Resaltar texto de entrada */
+  .highlight {
+    color: #ff2d55;
+  }
+  
+  /* Mensajes de error o información */
+  .message {
+    color: #ff4757;
+    margin: 10px 0;
+    display: block;
+  }
+  

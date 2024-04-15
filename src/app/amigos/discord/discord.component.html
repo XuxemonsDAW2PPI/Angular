@@ -1,0 +1,19 @@
+<!-- Añadir usuario (simplificación) -->
+<input type="text" [(ngModel)]="newUserId" placeholder="ID Usuario (ej. usuario#1234)">
+<input type="text" [(ngModel)]="newUserName" placeholder="Nombre Usuario">
+<button (click)="addUser(newUserId, newUserName)">Añadir Usuario</button>
+
+<!-- Búsqueda y solicitud de amistad -->
+<input type="text" [(ngModel)]="searchId" placeholder="Buscar usuario (ej. usuario#1234)">
+<button (click)="sendFriendRequest(searchId)">Enviar Solicitud</button>
+
+<!-- Solicitudes de amistad pendientes -->
+<div *ngFor="let req of currentUser.friendRequests">
+  {{ req }} <button (click)="respondToRequest(req, true)">Aceptar</button>
+  <button (click)="respondToRequest(req, false)">Rechazar</button>
+</div>
+
+<!-- Lista de amigos -->
+<div *ngFor="let friend of currentUser.friends">
+  {{ friend }}
+</div>

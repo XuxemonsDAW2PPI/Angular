@@ -119,7 +119,8 @@ export class UsersService {
     return this.http.post(url, {med_big: cantidad});
   }
 
- // parametros();
+
+  ///////SERVICIOS DISCORD
 
 
 

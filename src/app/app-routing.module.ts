@@ -10,9 +10,11 @@ import { EditXuxemonComponent } from './edit-xuxemon/edit-xuxemon.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
+import { DiscordComponent } from './amigos/discord/discord.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, 
+  { path: 'amigos', component: DiscordComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }, 
   { path: 'menu/:userId', component: MenuComponent }, 
