@@ -73,3 +73,15 @@ button:focus {
 .card-text {
   font-size: 16px; /* Ajuste el tamaño del texto de la tarjeta si es necesario */
 }
+
+img {
+  margin-left: 3%;
+  width: 50px;
+  height: auto;
+  transition: transform 0.3s ease; /* Agrega transición al cambio de tamaño */
+}
+
+img:hover {
+  transform: scale(1.1); /* Escala la imagen al 110% cuando el cursor está sobre ella */
+  cursor: pointer; /* Cambia el cursor a una mano cuando está sobre la imagen */
+}

@@ -2,6 +2,7 @@
   <h1>Inventario del usuario {{ userId }}</h1>
   <button (click)="aumentarCantidadAleatoria()">Añadir cantidad aleatoria</button>
   <button (click)="VermisXuxemons()">Mis Xuxemons</button>
+  <img src="assets/cofre.png" alt="Cofre" (click)="aumentarObjetosDiarios()" style="width: 50px; height: auto;">
   <ul>
     <li *ngFor="let item of inventario">
       <strong>Monedas:</strong> {{ item.monedas }}, 

@@ -91,6 +91,12 @@ export class UsersService {
     return this.http.get<any>(url, {});
   }
 
+
+  aumentarObjetosDiarios(userId: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/aumentar-objetos-diarios`;
+    return this.http.post<any>(url, {});
+  }
+
   /*updateXuxemonSize(newSize: string): Observable<any> {
     const url = 'http://127.0.0.1:8000/api/Xuxemon/actualizar-tamano'; 
     const data = { nuevoTamano: newSize }; 

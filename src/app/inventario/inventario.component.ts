@@ -65,6 +65,21 @@ export class InventarioComponent implements OnInit {
         }
       );
   }
+
+  aumentarObjetosDiarios() {
+    this.UsersService.aumentarObjetosDiarios(this.userId)
+      .subscribe(
+        response => {
+          console.log(response); 
+          alert(response);
+          this.getInventario(); 
+        },
+        error => {
+          alert('Espera al siguiente día');
+          console.log('Error al aumentar los objetos diarios:', error);
+        }
+      );
+  }
 }
 
 
