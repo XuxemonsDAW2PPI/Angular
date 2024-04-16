@@ -119,6 +119,11 @@ export class UsersService {
     return this.http.post(url, {med_big: cantidad});
   }
 
+  asignar4Xuxemons(userId: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/asignarxuxemons`;
+    return this.http.post<any>(url, {});
+  }
+
 
   ///////SERVICIOS DISCORD
 

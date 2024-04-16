@@ -80,6 +80,27 @@ export class InventarioComponent implements OnInit {
         }
       );
   }
+
+
+  asignarXuxemons() {
+    if (!this.userId) {
+      console.error('ID de usuario no especificado.');
+      return;
+    }
+
+    this.UsersService.asignar4Xuxemons(this.userId)
+      .subscribe(
+        response => {
+          console.log('Xuxemons activados correctamente:', response);
+          alert('4 xuxemons activados correctamente');
+        },
+        error => {
+          console.error('Error al activar xuxemons:', error);
+          alert('Error al activar xuxemons');
+        }
+      );
+  }
+  
 }
 
 
