@@ -11,8 +11,9 @@ export class InventarioComponent implements OnInit {
 
   inventario: any;
   userId: number;
+  asignacionRealizada = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private UsersService: UsersService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private UsersService: UsersService) { this.asignacionRealizada = this.UsersService.getAsignacionRealizada();}
 
   ngOnInit(): void {
     this.getUserIdFromUrl();
@@ -83,6 +84,12 @@ export class InventarioComponent implements OnInit {
 
 
   asignarXuxemons() {
+    if (this.asignacionRealizada) {
+      console.error('La asignación ya se ha realizado.');
+      alert('Solo puedes activar 4 xuxemons una vez');
+      return;
+    }
+
     if (!this.userId) {
       console.error('ID de usuario no especificado.');
       return;
@@ -91,12 +98,12 @@ export class InventarioComponent implements OnInit {
     this.UsersService.asignar4Xuxemons(this.userId)
       .subscribe(
         response => {
-          console.log('Xuxemons activados correctamente:', response);
+          console.log('Xuxemons asignados correctamente:', response);
           alert('4 xuxemons activados correctamente');
+          this.asignacionRealizada = true;
         },
         error => {
-          console.error('Error al activar xuxemons:', error);
-          alert('Error al activar xuxemons');
+          console.error('Error al asignar xuxemons:', error);
         }
       );
   }

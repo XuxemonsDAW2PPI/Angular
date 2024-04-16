@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from "rxjs";
+import { map, Observable, tap, throwError } from "rxjs";
 import { Xuxemon } from "../../models/Xuxemon";
 import { Usuario } from "../../models/Usuario";
 import { Login } from "../../models/Login";
@@ -11,6 +11,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 export class UsersService {
   
   allUsers: any[] = [];
+  private asignacionRealizada = false;
 
   constructor(private http: HttpClient) {
   }
@@ -120,8 +121,17 @@ export class UsersService {
   }
 
   asignar4Xuxemons(userId: number): Observable<any> {
+    if (this.asignacionRealizada) {
+      return throwError('La asignación ya se ha realizado.');
+    }
     const url = `http://127.0.0.1:8000/api/Inventario/${userId}/asignarxuxemons`;
-    return this.http.post<any>(url, {});
+    return this.http.post<any>(url, {}).pipe(
+      tap(() => this.asignacionRealizada = true) // Marca la asignación como realizada después de una ejecución exitosa
+    );
+  }
+
+  getAsignacionRealizada(): boolean {
+    return this.asignacionRealizada;
   }
 
 
