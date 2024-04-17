@@ -40,10 +40,10 @@
         <input type="number" id="infeccion3" [(ngModel)]="xuxesParaGrande" min="1" class="input-configuracion">
         <button type="button" class="btn-confirmacion" >Confirmar</button>
       </div>
-      <div class="campo-configuracion">
+      <div >
         <label for="xuxes diarias">xuxes diarias</label>
         <input type="number" id="xuxes diarias" [(ngModel)]="xuxesParaGrande" min="1" class="input-configuracion">
-        <button type="button" class="btn-confirmacion" >Confirmar</button>
+        <button type="button" class="btn-confirmacion" (click)="aumentarobjetosdiarios()">Actualizar Cantidad</button>
       </div>
       
     

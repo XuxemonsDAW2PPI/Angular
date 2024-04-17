@@ -18,6 +18,8 @@ export class ListaUsuariosComponent implements OnInit {
 
   xuxesParaMediano: any;
   xuxesParaGrande: any;
+  xuxesDiarias: number;
+  userId: number;
 
   editarXuxemon(user: any): void {
     this.xuxemonSeleccionado = user;
@@ -107,5 +109,15 @@ export class ListaUsuariosComponent implements OnInit {
       }
     );
   }
+
+  aumentarobjetosdiarios() {
+    this.userService.actualizarXuxesDiarias(this.userId, this.xuxesDiarias)
+      .subscribe({
+        next: (response) => alert('Cantidad actualizada correctamente!'),
+        error: (error) => console.error('Error al actualizar la cantidad:', error)
+      });
+  }
+
+
   
 }
