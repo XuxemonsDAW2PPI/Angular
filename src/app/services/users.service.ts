@@ -135,6 +135,20 @@ export class UsersService {
   }
 
 
+  actualizarXuxesDiarias(userId: number, nuevaCantidad: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/{userId}/aumentar-objetos-diarios`;
+    return this.http.post(url, {
+      userId: userId,
+      nuevaCantidad: nuevaCantidad
+    }, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+
+
+
+
+
   ///////SERVICIOS DISCORD
 
 
