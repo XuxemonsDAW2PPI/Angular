@@ -20,6 +20,8 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   mostrarInventario: boolean = false;
   inventario: any;
 
+  selectedXuxemonName: string = '';
+
   
   constructor(private userService: UsersService, private route: ActivatedRoute) { }
 
@@ -32,6 +34,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       }
     });
   }
+  
   
   loadUsers(): void {
     this.userService.loadUsers()
@@ -90,6 +93,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
 
   alimentarXuxemon(user: Xuxemon) {
 
+    this.selectedXuxemonName = user.nombre;
     // Establecer mostrarInventario en true
     this.mostrarInventario = true;
 
@@ -139,10 +143,24 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       .subscribe(
         response => {
           console.log('Cantidad de ' + objeto + ' disminuida en 1 unidad');
-          
+          if (response) { 
+            this.incrementarCaramelosComidos(this.userId, this.selectedXuxemonName); 
+          }
         },
         error => {
           console.error('Error al disminuir la cantidad de ' + objeto + ':', error);
+        }
+      );
+  }
+
+  incrementarCaramelosComidos(userId: number,xuxemonNombre: string) {
+    this.userService.incrementarCaramelosComidos(this.userId, xuxemonNombre)
+      .subscribe(
+        response => {
+          console.log('Caramelos comidos del Xuxemon incrementados:', response);
+        },
+        error => {
+          console.error('Error al incrementar los caramelos comidos del Xuxemon:', error);
         }
       );
   }
@@ -160,6 +178,8 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   getClassPorEstado(status: string): string {
     return status === 'Activo' ? 'user-card-active' : 'user-card';
   }
+
+  
   
 }
 

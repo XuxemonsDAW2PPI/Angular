@@ -8,4 +8,5 @@ maxLevelReached: any;
   tamano: string;
   caramelos: number;
   estado: string;
+  caramelos_comidos: number;
 }
