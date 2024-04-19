@@ -11,6 +11,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
+import { HospitalComponent } from './hospital/hospital.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, 
   { path: 'menu/:userId', component: MenuComponent }, 
   { path: 'inventario/:userId', component: InventarioComponent }, 
+  { path: 'hospital/:userId', component: HospitalComponent }, 
   { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
   { path: 'xuxedex', component: XuxedexComponent },
 

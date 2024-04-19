@@ -91,7 +91,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     }
   }
 
-  alimentarXuxemon(user: Xuxemon) {
+  alimentarXuxemonVisual(user: Xuxemon) {
 
     this.selectedXuxemonName = user.nombre;
     // Establecer mostrarInventario en true
@@ -111,23 +111,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
           console.log('Error al obtener el inventario:', error);
         }
       );
-    
-    if (!user.caramelos) {
-      user.caramelos = 0;
-    }
-    
-    // Incrementar el contador de caramelos
-    user.caramelos += 1;
   
-    // Actualizar el tamaño del xuxemon
-    if (user.tamano === 'Pequeño' && user.caramelos >= 3) {
-      user.tamano = 'Mediano';
-      user.caramelos = 0; // Reiniciar el contador de caramelos
-    } else if (user.tamano === 'Mediano' && user.caramelos >= 5) {
-      user.tamano = 'Grande';
-      user.caramelos = 0; // Reiniciar el contador de caramelos
-      user.maxLevelReached = true;
-    }
   }
 
   cerrarInventario() {
@@ -144,7 +128,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         response => {
           console.log('Cantidad de ' + objeto + ' disminuida en 1 unidad');
           if (response) { 
-            this.incrementarCaramelosComidos(this.userId, this.selectedXuxemonName); 
+            this.alimentarXuxemon(this.userId, this.selectedXuxemonName); 
           }
         },
         error => {
@@ -153,8 +137,8 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
       );
   }
 
-  incrementarCaramelosComidos(userId: number,xuxemonNombre: string) {
-    this.userService.incrementarCaramelosComidos(this.userId, xuxemonNombre)
+  alimentarXuxemon(userId: number,xuxemonNombre: string) {
+    this.userService.alimentarXuxemon(this.userId, xuxemonNombre)
       .subscribe(
         response => {
           console.log('Caramelos comidos del Xuxemon incrementados:', response);
