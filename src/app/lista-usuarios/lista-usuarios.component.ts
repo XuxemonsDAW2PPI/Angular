@@ -19,6 +19,10 @@ export class ListaUsuariosComponent implements OnInit {
   xuxesParaMediano: any;
   xuxesParaGrande: any;
   xuxesDiarias: number;
+  xuxesBajonAzucar: number; // Agrega esta variable para 'Xuxes Bajon de Azucar'
+  porcentajeInfeccion1: number; // Agrega esta variable para '% de infeccion 1'
+  porcentajeInfeccion2: number; // Agrega esta variable para '% de infeccion 2'
+  porcentajeInfeccion3: number;
   userId: number;
 
   editarXuxemon(user: any): void {
