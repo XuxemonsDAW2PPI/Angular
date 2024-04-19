@@ -22,7 +22,6 @@
     <h2>Xuxemons con Sobredosis de Azúcar</h2>
     <div class="users-grid">
       <div class="user-card" *ngFor="let xuxemon of xuxemonsInfectadosSobredosis">
-        <p>Caramelos: {{ xuxemon.caramelos_comidos }}</p>
         <img [src]="xuxemon.imagen" [alt]="xuxemon.nombre" class="user-image">
         <div class="user-info" [ngClass]="{
             'tipo-tierra': xuxemon.tipo === 'Tierra',
@@ -42,7 +41,6 @@
     <h2>Xuxemons con Atracón</h2>
     <div class="users-grid">
       <div class="user-card" *ngFor="let xuxemon of xuxemonsInfectadosAtracon">
-        <p>Caramelos: {{ xuxemon.caramelos_comidos }}</p>
         <img [src]="xuxemon.imagen" [alt]="xuxemon.nombre" class="user-image">
         <div class="user-info" [ngClass]="{
             'tipo-tierra': xuxemon.tipo === 'Tierra',
