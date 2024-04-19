@@ -1,6 +1,6 @@
 <div *ngIf="usersInPage.length > 0" class="users-grid">
   <div class="user-card" *ngFor="let user of usersInPage"
-  [ngClass]="getClassPorEstado(user.estado)">
+    [ngClass]="getClassPorEstado(user.estado)">
     <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
     <p *ngIf="user.tamano !== 'Max.Level'">Caramelos: {{ user.caramelos_comidos }}</p>
     <p *ngIf="user.tamano === 'Grande'">Max Level</p>
@@ -15,7 +15,7 @@
       <p>{{ user.tipo }}</p>
       <p>{{ user.tamano }}</p>
       <p>{{ user.estado }}</p>
-      <button *ngIf="!user.maxLevelReached" (click)="alimentarXuxemon(user)">Alimentar</button>
+      <button *ngIf="!user.maxLevelReached" [disabled]="user.tamano === 'Grande'" (click)="alimentarXuxemonVisual(user)">Alimentar</button>
     </div>
   </div>
 </div>

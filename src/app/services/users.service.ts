@@ -134,9 +134,14 @@ export class UsersService {
     return this.asignacionRealizada;
   }
 
-  incrementarCaramelosComidos(userId: number, xuxemonNombre: string): Observable<any> {
+  alimentarXuxemon(userId: number, xuxemonNombre: string): Observable<any> {
     const url = `http://127.0.0.1:8000/api/Xuxemon/alimentar/${userId}/${xuxemonNombre}`;
     return this.http.post<any>(url, {});
+  }
+
+  verXuxemonsInfectados(userId: number): Observable<any[]> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/xuxemoninfectado`;
+    return this.http.get<any>(url, {});
   }
 
 

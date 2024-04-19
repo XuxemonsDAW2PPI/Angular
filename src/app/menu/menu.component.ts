@@ -27,4 +27,8 @@ export class MenuComponent implements OnInit {
   navigateToInventory() {
     this.router.navigate(['/inventario', this.userId]); 
   }
+
+  navigateToHospital() {
+    this.router.navigate(['/hospital', this.userId]); 
+  }
 }
