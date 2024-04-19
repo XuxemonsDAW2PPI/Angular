@@ -25,6 +25,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxemons-sincrud.component';
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
+import { HospitalComponent } from './hospital/hospital.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DiscordComponent } from './amigos/discord/discord.component';
     ListaxuxemonsSincrudComponent,
     XuxedexComponent,
     DiscordComponent,
+    HospitalComponent,
   ],
   imports: [
     BrowserModule,
