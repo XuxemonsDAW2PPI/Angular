@@ -156,7 +156,24 @@ export class UsersService {
   }
 
 
+  ////SERVICIOS ENFERMEDADES
+  // Método para actualizar la enfermedad 1
+  curarEnfermedad1(userId: number, porcentajeInfeccion1: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/enfermedad1`;
+    return this.http.post<any>(url, { userId: userId, Enfermedad1: porcentajeInfeccion1 });
+  }
 
+  // Método para actualizar la enfermedad 2
+  curarEnfermedad2(userId: number, porcentajeInfeccion2: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/enfermedad2`;
+    return this.http.post<any>(url, { userId: userId, Enfermedad2: porcentajeInfeccion2 });
+  }
+
+  // Método para actualizar la enfermedad 3
+  curarEnfermedad3(userId: number, porcentajeInfeccion3: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/enfermedad3`;
+    return this.http.post<any>(url, { userId: userId, Enfermedad3: porcentajeInfeccion3 });
+  }
 
 
   ///////SERVICIOS DISCORD

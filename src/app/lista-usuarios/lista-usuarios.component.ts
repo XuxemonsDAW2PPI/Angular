@@ -23,6 +23,7 @@ export class ListaUsuariosComponent implements OnInit {
   porcentajeInfeccion1: number; // Agrega esta variable para '% de infeccion 1'
   porcentajeInfeccion2: number; // Agrega esta variable para '% de infeccion 2'
   porcentajeInfeccion3: number;
+  nombreXuxemon: string;
   userId: number;
 
   editarXuxemon(user: any): void {
@@ -122,6 +123,32 @@ export class ListaUsuariosComponent implements OnInit {
       });
   }
 
+
+  ///FUNCIONES ENFERMEDADES
+  confirmarInfeccion1(): void {
+    this.userService.curarEnfermedad1(this.userId, this.porcentajeInfeccion1)
+      .subscribe({
+        next: (response) => console.log('Infección 1 curada', response),
+        error: (error) => console.error('Error al curar infección 1', error)
+      });
+  }
+
+  confirmarInfeccion2(): void {
+    this.userService.curarEnfermedad2(this.userId, this.porcentajeInfeccion2)
+      .subscribe({
+        next: (response) => console.log('Infección 2 curada', response),
+        error: (error) => console.error('Error al curar infección 2', error)
+      });
+  }
+
+  confirmarInfeccion3(): void {
+    this.userService.curarEnfermedad3(this.userId, this.porcentajeInfeccion3)
+      .subscribe({
+        next: (response) => console.log('Infección 3 curada', response),
+        error: (error) => console.error('Error al curar infección 3', error)
+      });
+  }
+  
 
   
 }
