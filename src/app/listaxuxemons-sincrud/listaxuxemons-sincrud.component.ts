@@ -18,9 +18,17 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
 
   userId: number;
   mostrarInventario: boolean = false;
+  mostrarEditXuxemon: boolean = false;
   inventario: any;
+  idXuxemon: number;
 
   selectedXuxemonName: string = '';
+
+  xuxemonsDisponibles: any[]; 
+  tamanosDisponibles: string[]; 
+  mostrarXuxemonsDisponibles: boolean = false;
+
+  tamanoXuxemon: string = '';
 
   
   constructor(private userService: UsersService, private route: ActivatedRoute) { }
@@ -117,6 +125,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
   cerrarInventario() {
     this.mostrarInventario = false;
   }
+
   
   evitarCierre(event: MouseEvent) {
     event.stopPropagation(); // Evitar que el clic se propague al contenedor exterior
@@ -163,8 +172,20 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     return status === 'Activo' ? 'user-card-active' : 'user-card';
   }
 
+  DesactivarXuxemon(userId: number, idXuxemon: number): void {
+    this.userService.desactivarXuxemon(this.userId, idXuxemon)
+      .subscribe(
+        response => {
+          console.log('Xuxemon eliminado correctamente');
+        },
+        error => {
+          console.error('Error al eliminar el xuxemon:', error);
+        }
+      );
+  }
+
   
-  
+
 }
 
 

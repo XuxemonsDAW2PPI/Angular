@@ -155,7 +155,17 @@ export class UsersService {
     });
   }
 
+  desactivarXuxemon(idUsuario: number, idXuxemon: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/eliminar/${idUsuario}/${idXuxemon}`;
+    return this.http.delete(url);
+  }
 
+  getXuxemonParaEditar(idUsuario: number, idXuxemon: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/editar/${idUsuario}/${idXuxemon}`;
+    return this.http.get<any>(url);
+  }
+
+<<<<<<< Updated upstream
   ////SERVICIOS ENFERMEDADES
   // Método para actualizar la enfermedad 1
   curarEnfermedad1(userId: number, porcentajeInfeccion1: number): Observable<any> {
@@ -173,8 +183,33 @@ export class UsersService {
   curarEnfermedad3(userId: number, porcentajeInfeccion3: number): Observable<any> {
     const url = `http://127.0.0.1:8000/enfermedad3`;
     return this.http.post<any>(url, { userId: userId, Enfermedad3: porcentajeInfeccion3 });
+=======
+  getXuxemonsDisponibles(): Observable<any> {
+    const url = 'http://127.0.0.1:8000/api/Xuxemon/'; // Ajusta la URL según la ruta de tu API en Laravel
+    return this.http.get<any>(url);
   }
 
+  replaceXuxemon(userId: number, xuxemonId: number, xuxemonData: any): Observable<any> {
+    const url = `Xuxemon/{idUsuario}/xuxemons/{idXuxemon}/replace/${userId}/xuxemons/${xuxemonId}/replace`;
+    return this.http.put(url, xuxemonData);
+>>>>>>> Stashed changes
+  }
+
+  curarEnfermedad1(userId: number, nombre: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/${nombre}/curarenfermedad1`; 
+    return this.http.get<any>(url);
+  }
+
+  curarEnfermedad2(userId: number, nombre: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/${nombre}/curarenfermedad2`; 
+    return this.http.get<any>(url);
+  }
+  
+
+  curarEnfermedad3(userId: number, nombre: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Inventario/${userId}/${nombre}/curarenfermedad3`; 
+    return this.http.get<any>(url);
+  }
 
   ///////SERVICIOS DISCORD
 

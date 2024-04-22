@@ -16,6 +16,8 @@
       <p>{{ user.tamano }}</p>
       <p>{{ user.estado }}</p>
       <button *ngIf="!user.maxLevelReached" [disabled]="user.tamano === 'Grande'" (click)="alimentarXuxemonVisual(user)">Alimentar</button>
+      <button (click)="DesactivarXuxemon(userId, user.id)">Desactivar</button>
+
     </div>
   </div>
 </div>

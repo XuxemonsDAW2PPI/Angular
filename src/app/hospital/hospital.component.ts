@@ -48,5 +48,45 @@ export class HospitalComponent implements OnInit {
         }
       );
   }
+
+  curarEnfermedad1(userId: number, nombreXuxemon: string): void {
+    this.userService.curarEnfermedad1(this.userId, nombreXuxemon)
+      .subscribe(
+        (response: any) => {
+          console.log('Enfermedad 1 curada con éxito:', response);
+          this.loadXuxemonsInfectados();
+        },
+        error => {
+          console.error('Error al curar la Enfermedad 1:', error);
+        }
+      );
+  }
+
+  curarEnfermedad2(userId: number, nombreXuxemon: string): void {
+    this.userService.curarEnfermedad2(this.userId, nombreXuxemon)
+      .subscribe(
+        (response: any) => {
+          console.log('Enfermedad 2 curada con éxito:', response);
+          this.loadXuxemonsInfectados();
+        },
+        error => {
+          console.error('Error al curar la Enfermedad 2:', error);
+        }
+      );
+  }
+
+  curarEnfermedad3(userId: number, nombreXuxemon: string): void {
+    this.userService.curarEnfermedad3(this.userId, nombreXuxemon)
+      .subscribe(
+        (response: any) => {
+          console.log('Enfermedad 3 curada con éxito:', response);
+          this.loadXuxemonsInfectados();
+        },
+        error => {
+          console.error('Error al curar la Enfermedad 3:', error);
+        }
+      );
+  }
+
 }
 
