@@ -153,6 +153,7 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
           console.log('Caramelos comidos del Xuxemon incrementados:', response);
         },
         error => {
+          alert(error);
           console.error('Error al incrementar los caramelos comidos del Xuxemon:', error);
         }
       );
@@ -176,10 +177,11 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     this.userService.desactivarXuxemon(this.userId, idXuxemon)
       .subscribe(
         response => {
-          console.log('Xuxemon eliminado correctamente');
+          console.log('Xuxemon desactivado correctamente');
+          alert('Xuxemon desactivado correctamente');
         },
         error => {
-          console.error('Error al eliminar el xuxemon:', error);
+          console.error('Error al desactivar el xuxemon:', error);
         }
       );
   }

@@ -104,6 +104,7 @@ export class InventarioComponent implements OnInit {
         },
         error => {
           console.error('Error al asignar xuxemons:', error);
+          alert('Ya tienes 4 xuxemons asignados');
         }
       );
   }

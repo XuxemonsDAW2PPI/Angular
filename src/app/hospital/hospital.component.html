@@ -1,21 +1,18 @@
-
 <div *ngIf="xuxemonsInfectadosBajon && xuxemonsInfectadosBajon.length > 0">
   <h2>Xuxemons con Bajón de Azúcar</h2>
   <div class="users-grid">
     <div class="user-card" *ngFor="let xuxemon of xuxemonsInfectadosBajon">
       <img [src]="xuxemon.imagen" [alt]="xuxemon.nombre" class="user-image">
       <div class="user-info" [ngClass]="{
-          'tipo-tierra': xuxemon.tipo === 'Tierra',
-          'tipo-aire': xuxemon.tipo === 'Aire',
-          'tipo-agua': xuxemon.tipo === 'Agua'
-        }">
+        'tipo-tierra': xuxemon.tipo === 'Tierra',
+        'tipo-aire': xuxemon.tipo === 'Aire',
+        'tipo-agua': xuxemon.tipo === 'Agua'
+      }">
         <p>{{ xuxemon.nombre }}</p>
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad1(userId, xuxemon.nombre)">Curar Enfermedad 1</button>
-        <button (click)="curarEnfermedad2(userId, xuxemon.nombre)">Curar Enfermedad 2</button>
-        <button (click)="curarEnfermedad3(userId, xuxemon.nombre)">Curar Enfermedad 3</button>
+        <button (click)="curarEnfermedad1(userId, xuxemon.nombre)">Curar Bajón de Azúcar</button>
       </div>
     </div>
   </div>
@@ -27,17 +24,15 @@
     <div class="user-card" *ngFor="let xuxemon of xuxemonsInfectadosSobredosis">
       <img [src]="xuxemon.imagen" [alt]="xuxemon.nombre" class="user-image">
       <div class="user-info" [ngClass]="{
-          'tipo-tierra': xuxemon.tipo === 'Tierra',
-          'tipo-aire': xuxemon.tipo === 'Aire',
-          'tipo-agua': xuxemon.tipo === 'Agua'
-        }">
+        'tipo-tierra': xuxemon.tipo === 'Tierra',
+        'tipo-aire': xuxemon.tipo === 'Aire',
+        'tipo-agua': xuxemon.tipo === 'Agua'
+      }">
         <p>{{ xuxemon.nombre }}</p>
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad1(userId, xuxemon.nombre)">Curar Enfermedad 1</button>
-        <button (click)="curarEnfermedad2(userId, xuxemon.nombre)">Curar Enfermedad 2</button>
-        <button (click)="curarEnfermedad3(userId, xuxemon.nombre)">Curar Enfermedad 3</button>
+        <button (click)="curarEnfermedad2(userId, xuxemon.nombre)">Curar Sobredosis de Azúcar</button>
       </div>
     </div>
   </div>
@@ -49,20 +44,19 @@
     <div class="user-card" *ngFor="let xuxemon of xuxemonsInfectadosAtracon">
       <img [src]="xuxemon.imagen" [alt]="xuxemon.nombre" class="user-image">
       <div class="user-info" [ngClass]="{
-          'tipo-tierra': xuxemon.tipo === 'Tierra',
-          'tipo-aire': xuxemon.tipo === 'Aire',
-          'tipo-agua': xuxemon.tipo === 'Agua'
-        }">
+        'tipo-tierra': xuxemon.tipo === 'Tierra',
+        'tipo-aire': xuxemon.tipo === 'Aire',
+        'tipo-agua': xuxemon.tipo === 'Agua'
+      }">
         <p>{{ xuxemon.nombre }}</p>
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad1(userId, xuxemon.nombre)">Curar Enfermedad 1</button>
-        <button (click)="curarEnfermedad2(userId, xuxemon.nombre)">Curar Enfermedad 2</button>
-        <button (click)="curarEnfermedad3(userId, xuxemon.nombre)">Curar Enfermedad 3</button>
+        <button (click)="curarEnfermedad3(userId, xuxemon.nombre)">Curar Atracón</button>
       </div>
     </div>
   </div>
 </div>
+
 
   

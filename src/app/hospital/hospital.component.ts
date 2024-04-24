@@ -54,6 +54,7 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 1 curada con éxito:', response);
+          alert(response);
           this.loadXuxemonsInfectados();
         },
         error => {
@@ -67,6 +68,7 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 2 curada con éxito:', response);
+          alert(response);
           this.loadXuxemonsInfectados();
         },
         error => {
@@ -80,6 +82,7 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 3 curada con éxito:', response);
+          alert(response);
           this.loadXuxemonsInfectados();
         },
         error => {

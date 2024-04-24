@@ -124,7 +124,7 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
 
-  ///FUNCIONES ENFERMEDADES
+ /* ///FUNCIONES ENFERMEDADES
   confirmarInfeccion1(): void {
     this.userService.curarEnfermedad1(this.userId, this.porcentajeInfeccion1)
       .subscribe({
@@ -148,7 +148,7 @@ export class ListaUsuariosComponent implements OnInit {
         error: (error) => console.error('Error al curar infección 3', error)
       });
   }
-  
+  */
 
   
 }
