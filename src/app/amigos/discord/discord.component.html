@@ -1,19 +1,44 @@
-<!-- Añadir usuario (simplificación) -->
-<input type="text" [(ngModel)]="newUserId" placeholder="ID Usuario (ej. usuario#1234)">
-<input type="text" [(ngModel)]="newUserName" placeholder="Nombre Usuario">
-<button (click)="addUser(newUserId, newUserName)">Añadir Usuario</button>
+<div class="container">
+  <!-- Lista de amigos -->
+  <div class="panel left-panel">
+    <h2>Lista de Amigos</h2>
+    <ul>
+      <li *ngFor="let friend of friends">{{ friend.name }}</li>
+    </ul>
+  </div>
 
-<!-- Búsqueda y solicitud de amistad -->
-<input type="text" [(ngModel)]="searchId" placeholder="Buscar usuario (ej. usuario#1234)">
-<button (click)="sendFriendRequest(searchId)">Enviar Solicitud</button>
+  <!-- Solicitudes de amistad recibidas -->
+  <div class="panel middle-panel">
+    <h2>Solicitudes de Amistad Recibidas</h2>
+    <ul>
+      <li *ngFor="let request of friendRequests">
+        {{ request.name }} - {{ request.status === 'pending' ? 'Pendiente' : '' }}
+        <img *ngIf="request.status === 'pending'" src="assets/aceptar.png" alt="Aceptar" class="button-image accept-button" (click)="acceptRequest(request)">
+        <img *ngIf="request.status === 'pending'" src="assets/denegar.png" alt="Denegar" class="button-image deny-button" (click)="denyRequest(request)">
+      </li>
+    </ul>
+  </div>
 
-<!-- Solicitudes de amistad pendientes -->
-<div *ngFor="let req of currentUser.friendRequests">
-  {{ req }} <button (click)="respondToRequest(req, true)">Aceptar</button>
-  <button (click)="respondToRequest(req, false)">Rechazar</button>
-</div>
+  <!-- Búsqueda de usuarios y solicitudes enviadas -->
+  <div class="panel right-panel">
+    <h2>Buscar Usuarios</h2>
+    <input type="text" [(ngModel)]="searchTag" placeholder="Introduce Discord Tag" (keyup.enter)="searchUser()">
+    <button (click)="searchUser()">Buscar</button>
 
-<!-- Lista de amigos -->
-<div *ngFor="let friend of currentUser.friends">
-  {{ friend }}
+    <div *ngIf="searchResult">
+      <p>Usuario encontrado: {{ searchResult.name }}</p>
+      <button (click)="sendFriendRequest(searchResult)" *ngIf="!searchResult.status || searchResult.status === 'denied'">Enviar Solicitud de Amistad</button>
+      <p *ngIf="searchResult.status === 'pending'">Solicitud Pendiente</p>
+    </div>
+  </div>
+
+  <!-- Solicitudes de amistad enviadas -->
+  <div class="panel extra-panel">
+    <h2>Solicitudes de Amistad Enviadas</h2>
+    <ul>
+      <li *ngFor="let sentRequest of sentRequests">
+        {{ sentRequest.name }} - {{ sentRequest.status === 'pending' ? 'Pendiente' : sentRequest.status }}
+      </li>
+    </ul>
+  </div>
 </div>

@@ -63,7 +63,7 @@ import { HospitalComponent } from './hospital/hospital.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,DiscordComponent]
 })
 export class AppModule {
 }
