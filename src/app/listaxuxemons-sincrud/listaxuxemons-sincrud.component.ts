@@ -48,23 +48,10 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     this.userService.loadUsers()
       .subscribe(data => {
         this.allUsers = data;
-        this.generateRandomUsers();
         this.getXuxemonsDelUser(this.userId);
       }, error => {
         console.error('Error al cargar los usuarios desde la API:', error);
       });
-  }
-
-  generateRandomUsers() {
-    this.usersInPage = [];
-    for (let i = 0; i < this.pageSize; i++) {
-      const randomIndex = Math.floor(Math.random() * this.allUsers.length);
-      const randomUser = this.allUsers[randomIndex];
-      for (let j = 0; j < 3; j++) { 
-        const clonedUser = { ...randomUser }; 
-        this.usersInPage.push(clonedUser);
-      }
-    }
   }
 
   updateUsersBasedOnPage() {
@@ -131,23 +118,8 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
     event.stopPropagation(); // Evitar que el clic se propague al contenedor exterior
   }
 
-  disminuirCantidad(objeto: string) {
-    this.userService.disminuirCantidadObjeto(this.userId, objeto)
-      .subscribe(
-        response => {
-          console.log('Cantidad de ' + objeto + ' disminuida en 1 unidad');
-          if (response) { 
-            this.alimentarXuxemon(this.userId, this.selectedXuxemonName); 
-          }
-        },
-        error => {
-          console.error('Error al disminuir la cantidad de ' + objeto + ':', error);
-        }
-      );
-  }
-
-  alimentarXuxemon(userId: number,xuxemonNombre: string) {
-    this.userService.alimentarXuxemon(this.userId, xuxemonNombre)
+  alimentarXuxemon(userId: number,xuxemonNombre: string, objeto: string) {
+    this.userService.alimentarXuxemon(this.userId, this.selectedXuxemonName, objeto)
       .subscribe(
         response => {
           console.log('Caramelos comidos del Xuxemon incrementados:', response);
@@ -182,6 +154,20 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         },
         error => {
           console.error('Error al desactivar el xuxemon:', error);
+        }
+      );
+  }
+
+  ActivarXuxemon(userId: number, idXuxemon: number): void {
+    this.userService.activarXuxemon(this.userId, idXuxemon)
+      .subscribe(
+        response => {
+          console.log('Xuxemon activado correctamente');
+          alert('Xuxemon activado correctamente');
+        },
+        error => {
+          console.error('Error al desactivar el xuxemon:', error);
+          alert("No puedes tener más de 4 xuxemons activados");
         }
       );
   }

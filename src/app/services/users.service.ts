@@ -134,8 +134,8 @@ export class UsersService {
     return this.asignacionRealizada;
   }
 
-  alimentarXuxemon(userId: number, xuxemonNombre: string): Observable<any> {
-    const url = `http://127.0.0.1:8000/api/Xuxemon/alimentar/${userId}/${xuxemonNombre}`;
+  alimentarXuxemon(userId: number, xuxemonNombre: string, objetonombre: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/alimentar/${userId}/${xuxemonNombre}/${objetonombre}`;
     return this.http.post<any>(url, {});
   }
 
@@ -157,7 +157,12 @@ export class UsersService {
 
   desactivarXuxemon(idUsuario: number, idXuxemon: number): Observable<any> {
     const url = `http://127.0.0.1:8000/api/Xuxemon/eliminar/${idUsuario}/${idXuxemon}`;
-    return this.http.delete(url);
+    return this.http.post<any>(url, {});
+  }
+
+  activarXuxemon(idusuario: number, id: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/activar/${idusuario}/${id}`;
+    return this.http.post<any>(url, {});
   }
 
   getXuxemonParaEditar(idUsuario: number, idXuxemon: number): Observable<any> {

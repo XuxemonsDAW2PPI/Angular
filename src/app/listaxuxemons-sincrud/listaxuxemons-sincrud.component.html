@@ -1,11 +1,9 @@
 <div *ngIf="usersInPage.length > 0" class="users-grid">
-  <div class="user-card" *ngFor="let user of usersInPage"
-    [ngClass]="getClassPorEstado(user.estado)">
+  <div class="user-card" *ngFor="let user of usersInPage" [ngClass]="getClassPorEstado(user.estado)">
     <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
     <p *ngIf="user.tamano !== 'Max.Level'">Caramelos: {{ user.caramelos_comidos }}</p>
     <p *ngIf="user.tamano === 'Grande'">Max Level</p>
-    <img [src]="user.imagen" [alt]="user.nombre" class="user-image"
-         [ngStyle]="{'width': getSize(user.tamano)}">
+    <img [src]="user.imagen" [alt]="user.nombre" class="user-image" [ngStyle]="{'width': getSize(user.tamano)}">
     <div class="user-info" [ngClass]="{
       'tipo-tierra': user.tipo === 'Tierra',
       'tipo-aire': user.tipo === 'Aire',
@@ -16,26 +14,27 @@
       <p>{{ user.tamano }}</p>
       <p>{{ user.estado }}</p>
       <button *ngIf="!user.maxLevelReached" [disabled]="user.tamano === 'Grande'" (click)="alimentarXuxemonVisual(user)">Alimentar</button>
-      <button (click)="DesactivarXuxemon(userId, user.id)">Desactivar</button>
-
+      <button *ngIf="user.estado === 'Activo'" (click)="DesactivarXuxemon(userId, user.id)">Desactivar</button>
+      <button *ngIf="user.estado === 'Inactivo'" (click)="ActivarXuxemon(userId, user.id)">Activar</button>
     </div>
   </div>
 </div>
+
 
 <div *ngIf="mostrarInventario" class="overlay" (click)="cerrarInventario()">
   <div class="inventario" (click)="evitarCierre($event)">
     <ul>
       <li *ngFor="let item of inventario">
-        <button (click)="disminuirCantidad('caramelos')">Caramelos: {{ item.caramelos }}</button>
-        <button (click)="disminuirCantidad('piruleta')">Piruleta: {{ item.piruleta }}</button>
-        <button (click)="disminuirCantidad('piruletal')">Piruletal: {{ item.piruletal }}</button>
-        <button (click)="disminuirCantidad('algodon')">Algodon: {{ item.algodon }}</button> 
-        <button (click)="disminuirCantidad('tabletachoco')">Tableta de Chocolate: {{ item.tabletachoco }}</button>
-        <button (click)="disminuirCantidad('caramelo')">Caramelo: {{ item.caramelo }}</button>
-        <button (click)="disminuirCantidad('baston')">Bastón: {{ item.baston }}</button> 
-        <button (click)="disminuirCantidad('caramelolargo')">Caramelo largo: {{ item.caramelolargo }}</button> 
-        <button (click)="disminuirCantidad('carameloredondo')">Caramelo redondo: {{ item.carameloredondo }}</button>
-        <button (click)="disminuirCantidad('surtido')">Surtido: {{ item.surtido }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'caramelos')">Caramelos: {{ item.caramelos }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'piruleta')">Piruleta: {{ item.piruleta }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'piruletal')">Piruletal: {{ item.piruletal }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'algodon')">Algodon: {{ item.algodon }}</button> 
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'tabletachoco')">Tableta de Chocolate: {{ item.tabletachoco }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'caramelo')">Caramelo: {{ item.caramelo }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'baston')">Bastón: {{ item.baston }}</button> 
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'caramelolargo')">Caramelo largo: {{ item.caramelolargo }}</button> 
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'carameloredondo')">Caramelo redondo: {{ item.carameloredondo }}</button>
+        <button (click)="alimentarXuxemon(userId, selectedXuxemonName , 'surtido')">Surtido: {{ item.surtido }}</button>
       </li>
     </ul>
   </div>
