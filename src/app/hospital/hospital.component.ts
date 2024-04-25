@@ -14,6 +14,11 @@ export class HospitalComponent implements OnInit {
   xuxemonsInfectadosBajon: Xuxemon[];
   xuxemonsInfectadosSobredosis: Xuxemon[];
   xuxemonsInfectadosAtracon: Xuxemon[];
+  selectedXuxemonName: string;
+  mostrarInventarioBajon: boolean = false;
+  inventario: any;
+  mostrarInventarioSobredosis: boolean = false;
+  mostrarInventarioAtracon: boolean = false;
 
   constructor(private route: ActivatedRoute, private userService: UsersService) {}
 
@@ -89,6 +94,83 @@ export class HospitalComponent implements OnInit {
           console.error('Error al curar la Enfermedad 3:', error);
         }
       );
+  }
+
+  vacunarBajondeAzucarVisual(xuxemon: Xuxemon) {
+
+    this.selectedXuxemonName = xuxemon.nombre;
+    this.mostrarInventarioBajon = true;
+
+    // Llamar al método getInventario() para actualizar el inventario
+    this.userService.getInventario(this.userId)
+      .subscribe(
+        data => {
+          if (data === null || data.length === 0) {
+            console.warn('No se encontró inventario para este usuario.');
+          } else {
+            this.inventario = data;
+          }
+        },
+        error => {
+          console.log('Error al obtener el inventario:', error);
+        }
+      );
+  
+  }
+
+  vacunarSobredosisVisual(xuxemon: Xuxemon) {
+
+    this.selectedXuxemonName = xuxemon.nombre;
+    this.mostrarInventarioSobredosis = true;
+
+    // Llamar al método getInventario() para actualizar el inventario
+    this.userService.getInventario(this.userId)
+      .subscribe(
+        data => {
+          if (data === null || data.length === 0) {
+            console.warn('No se encontró inventario para este usuario.');
+          } else {
+            this.inventario = data;
+          }
+        },
+        error => {
+          console.log('Error al obtener el inventario:', error);
+        }
+      );
+  
+  }
+
+  vacunarAtraconVisual(xuxemon: Xuxemon) {
+
+    this.selectedXuxemonName = xuxemon.nombre;
+    this.mostrarInventarioAtracon = true;
+
+    // Llamar al método getInventario() para actualizar el inventario
+    this.userService.getInventario(this.userId)
+      .subscribe(
+        data => {
+          if (data === null || data.length === 0) {
+            console.warn('No se encontró inventario para este usuario.');
+          } else {
+            this.inventario = data;
+          }
+        },
+        error => {
+          console.log('Error al obtener el inventario:', error);
+        }
+      );
+  
+  }
+
+  cerrarInventario() {
+    this.mostrarInventarioBajon = false;
+    this.mostrarInventarioSobredosis = false;
+    this.mostrarInventarioAtracon = false;
+  }
+
+  
+  evitarCierre(event: MouseEvent) {
+    event.stopPropagation(); // Evitar que el clic se propague al contenedor exterior
   }
 
 }

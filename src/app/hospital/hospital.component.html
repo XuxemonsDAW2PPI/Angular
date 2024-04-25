@@ -12,7 +12,7 @@
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad1(userId, xuxemon.nombre)">Curar Bajón de Azúcar</button>
+        <button (click)="vacunarBajondeAzucarVisual(xuxemon)">Curar Bajón de Azúcar</button>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad2(userId, xuxemon.nombre)">Curar Sobredosis de Azúcar</button>
+        <button (click)="vacunarSobredosisVisual(xuxemon)">Curar Sobredosis de Azúcar</button>
       </div>
     </div>
   </div>
@@ -52,11 +52,39 @@
         <p>{{ xuxemon.tipo }}</p>
         <p>{{ xuxemon.tamano }}</p>
         <p>{{ xuxemon.estado }}</p>
-        <button (click)="curarEnfermedad3(userId, xuxemon.nombre)">Curar Atracón</button>
+        <button (click)="vacunarAtraconVisual(xuxemon)">Curar Atracón</button>
       </div>
     </div>
   </div>
 </div>
 
 
-  
+<div *ngIf="mostrarInventarioBajon" class="overlay" (click)="cerrarInventario()">
+  <div class="inventario" (click)="evitarCierre($event)">
+    <ul>
+      <li *ngFor="let item of inventario">
+        <button (click)="curarEnfermedad1(userId, selectedXuxemonName)">Xocolatina: {{ item.Xocolatina }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="mostrarInventarioSobredosis" class="overlay" (click)="cerrarInventario()">
+  <div class="inventario" (click)="evitarCierre($event)">
+    <ul>
+      <li *ngFor="let item of inventario">
+        <button (click)="curarEnfermedad2(userId, selectedXuxemonName)">XalDeFrutas: {{ item.XalDeFrutas }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="mostrarInventarioAtracon" class="overlay" (click)="cerrarInventario()">
+  <div class="inventario" (click)="evitarCierre($event)">
+    <ul>
+      <li *ngFor="let item of inventario">
+        <button (click)="curarEnfermedad3(userId, selectedXuxemonName)">Inxulina: {{ item.Inxulina }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
