@@ -59,7 +59,8 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 1 curada con éxito:', response);
-          alert(response);
+          alert('El xuxemon ha sido vacunado y curado con éxito');
+          this.mostrarInventarioBajon = false;
           this.loadXuxemonsInfectados();
         },
         error => {
@@ -73,7 +74,8 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 2 curada con éxito:', response);
-          alert(response);
+          alert('El xuxemon ha sido vacunado y curado con éxito');
+          this.mostrarInventarioSobredosis = false;
           this.loadXuxemonsInfectados();
         },
         error => {
@@ -87,7 +89,8 @@ export class HospitalComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Enfermedad 3 curada con éxito:', response);
-          alert(response);
+          alert('El xuxemon ha sido vacunado y curado con éxito');
+          this.mostrarInventarioAtracon = false;
           this.loadXuxemonsInfectados();
         },
         error => {
