@@ -12,7 +12,7 @@ import { UsersService } from "../services/users.service";
 export class ListaxuxemonsSincrudComponent implements OnInit {
 
   currentPage: number = 1;
-  pageSize: number = 6; // Mostrar solo 6 Xuxemons
+  pageSize: number = 6; 
   usersInPage: Xuxemon[] = [];
   allUsers: Xuxemon[] = [];
 
@@ -124,7 +124,6 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         response => {
           console.log('Caramelos comidos del Xuxemon incrementados:', response);
           this.mostrarInventario = false;
-          this.getXuxemonsDelUser(this.userId);
         },
         error => {
           alert('El xuxemon está enfermo y no puedes darle más caramelos');
@@ -153,7 +152,6 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         response => {
           console.log('Xuxemon desactivado correctamente');
           alert('Xuxemon desactivado correctamente');
-          this.getXuxemonsDelUser(this.userId);
         },
         error => {
           console.error('Error al desactivar el xuxemon:', error);
@@ -167,7 +165,6 @@ export class ListaxuxemonsSincrudComponent implements OnInit {
         response => {
           console.log('Xuxemon activado correctamente');
           alert('Xuxemon activado correctamente');
-          this.getXuxemonsDelUser(this.userId);
         },
         error => {
           console.error('Error al desactivar el xuxemon:', error);
