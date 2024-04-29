@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'hospital/:userId', component: HospitalComponent }, 
   { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
   { path: 'xuxedex', component: XuxedexComponent },
+  { path: 'amigos/:userId', component: DiscordComponent },
 
   { 
     path: 'lista-usuarios', component: ListaUsuariosComponent, 

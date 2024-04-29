@@ -31,4 +31,10 @@ export class MenuComponent implements OnInit {
   navigateToHospital() {
     this.router.navigate(['/hospital', this.userId]); 
   }
+
+  navigateToAmigos() {
+    this.router.navigate(['/amigos', this.userId]);
+  }
+
+
 }
