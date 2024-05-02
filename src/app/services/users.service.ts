@@ -246,16 +246,10 @@ export class UsersService {
     return this.http.get<any>(url);
   }
 
+  listaAmigos(userId: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/listaamigos`;
+    return this.http.get<any>(url);
+  }
 
-
-
-
-
-
-
-
-
-
-  
   
 }

@@ -14,6 +14,7 @@ export class DiscordComponent implements OnInit {
   amigoEncontrado: string = '';
   userId: number;
   solicitudesAmistad: any[] = [];
+  listaAmigos: any[] = [];
 
   constructor(private route: ActivatedRoute, private userService: UsersService) {}
 
@@ -21,6 +22,7 @@ export class DiscordComponent implements OnInit {
   ngOnInit(): void {
     this.getUserIdFromUrl();
     this.obtenerSolicitudesAmistad();
+    this.obtenerListaAmigos();
   }
 
 
@@ -82,6 +84,19 @@ export class DiscordComponent implements OnInit {
               },
               error => {
                 console.error('Error al obtener las solicitudes de amistad:', error);
+              }
+            );
+        }
+
+        obtenerListaAmigos(): void {
+          this.userService.listaAmigos(this.userId)
+            .subscribe(
+              (data: any) => {
+                console.log('Lista de amigos obtenido:', data);
+                this.listaAmigos = data; 
+              },
+              error => {
+                console.error('Error al obtener la lista de amigos:', error);
               }
             );
         }
