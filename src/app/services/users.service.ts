@@ -221,6 +221,30 @@ export class UsersService {
   ///////SERVICIOS DISCORD
 
 
+  buscarAmigo(tag: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/buscaramigos?tag=${tag}`;
+    return this.http.get<any>(url);
+  }
+
+  enviarSolicitudAmigo(userId: number, tagAmigo: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/añadiramigo?amigo=${encodeURIComponent(tagAmigo)}`;
+    return this.http.get<any>(url);
+  }
+
+  obtenerSolicitudesAmistad(userId: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/solicitudes`;
+    return this.http.get<any>(url);
+  }
+
+  aceptarSolicitud(userId: number, tagAmigo: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/aceptaramigo?solicitud=${encodeURIComponent(tagAmigo)}`;
+    return this.http.get<any>(url);
+  }
+
+  denegarSolicitud(userId: number, tagAmigo: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/rechazaramigo?solicitud=${encodeURIComponent(tagAmigo)}`;
+    return this.http.get<any>(url);
+  }
 
 
 

@@ -1,8 +1,45 @@
+
+
 <div class="container">
-  <!-- Container 1: Barra de búsqueda -->
+  <!-- Barra de búsqueda -->
   <div class="search-section">
-    <h2>Buscar Usuarios</h2>
-    <input type="text" [(ngModel)]="searchTag" placeholder="Introduce Discord Tag" (keyup)="searchUser()">
+    <h2>Buscar Amigo</h2>
+    <input type="text" [(ngModel)]="tagBusqueda" placeholder="Buscar por tag...">
+    <button (click)="buscarAmigo()">Buscar</button>
+  </div>
+
+  <!-- Resultado de la búsqueda -->
+  <div *ngIf="amigoEncontrado">
+    <h3>Amigo encontrado:</h3>
+    <p>{{ amigoEncontrado }}</p>
+    <button (click)="enviarSolicitud(amigoEncontrado)">Enviar solicitud</button>
+  </div>
+
+
+
+  <div class="panel middle-panel">
+    <h2>Solicitudes de Amistad Recibidas</h2>
+    <ul>
+      <li *ngFor="let solicitud of solicitudesAmistad">
+        {{ solicitud.tag }}
+        <img src="assets/aceptar.png" alt="Aceptar" class="button-image accept-button" (click)="aceptarSolicitud(userId, solicitud.tag)">
+        <img src="assets/denegar.png" alt="Denegar" class="button-image deny-button" (click)="denegarSolicitud(userId, solicitud.tag)">
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+  
+  
+
+
+<!--<div class="container">
+  <div class="search-section">
+    <input type="text" [(ngModel)]="tagBusqueda" (input)="buscarAmigo()" placeholder="Buscar amigo por tag...">
+  </div>
     <ul *ngIf="filteredUsers.length > 0" class="search-results">
       <li *ngFor="let user of filteredUsers" (click)="selectUser(user)" [class.selected]="selectedUser === user">
         {{ user.name }}
@@ -16,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Container 2: Lista de amigos -->
+  Container 2: Lista de amigos 
   <div class="panel left-panel">
     <h2>Lista de Amigos</h2>
     <ul>
@@ -24,7 +61,7 @@
     </ul>
   </div>
 
-  <!-- Container 3: Solicitudes de amistad -->
+   Container 3: Solicitudes de amistad 
   <div class="panel middle-panel">
     <h2>Solicitudes de Amistad Recibidas</h2>
     <ul>
@@ -40,7 +77,7 @@
     </ul>
   </div>
 
-  <!-- Container 4: Solicitudes de amistad enviadas -->
+Container 4: Solicitudes de amistad enviadas 
   <div class="panel extra-panel">
     <h2>Solicitudes de Amistad Enviadas</h2>
     <ul>
@@ -49,4 +86,4 @@
       </li>
     </ul>
   </div>
-</div>
+-->

@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-interface User {
-  id: number;
-  name: string;
-  tag: string;
-  isFriend: boolean;
-  status?: 'pending' | 'accepted' | 'denied';
-
-}
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
+import { Usuario } from "../../../models/Usuario";
 
 @Component({
   selector: 'app-discord',
@@ -15,91 +9,108 @@ interface User {
   styleUrls: ['./discord.component.css']
 })
 export class DiscordComponent implements OnInit {
-  friends: User[] = [];  // Lista de amigos
-  users: User[] = [      // Lista de usuarios potenciales para amistad
-    { id: 16, name: 'Pepe#1016', tag: 'Pepe#1016', isFriend: false },
-    { id: 17, name: 'Pepa#1017', tag: 'Pepa#1017', isFriend: false },
-    { id: 18, name: 'Pepe#1018', tag: 'Pepe#1018', isFriend: false },
-    { id: 19, name: 'Pepa#1019', tag: 'Pepa#1019', isFriend: false },
-    { id: 20, name: 'Pepe#1020', tag: 'Pepe#1020', isFriend: false },
-    { id: 21, name: 'Pepe#1021', tag: 'Pepe#1021', isFriend: false },
-    { id: 22, name: 'Pepa#1022', tag: 'Pepa#1022', isFriend: false },
-    { id: 23, name: 'Pepe#1023', tag: 'Pepe#1023', isFriend: false },
-    { id: 24, name: 'Pepa#1024', tag: 'Pepa#1024', isFriend: false },
-    { id: 25, name: 'Pepe#1025', tag: 'Pepe#1025', isFriend: false },
 
+  tagBusqueda: string = '';
+  amigoEncontrado: string = '';
+  userId: number;
+  solicitudesAmistad: any[] = [];
 
-
-  ];
-  friendRequests: User[] = [];
-  sentRequests: User[] = [];
-  searchTag: string = '';
-  searchResult: User | null = null;
-  selectedUser: User | null = null;
-  filteredUsers: User[] = [];
+  constructor(private route: ActivatedRoute, private userService: UsersService) {}
 
 
   ngOnInit(): void {
-    // Simular la recepción de algunas solicitudes de amistad al cargar el componente
-    this.friendRequests = [
-      { id: 1, name: 'Alice#0001', tag: 'Alice#0001', isFriend: false, status: 'pending' },
-      { id: 2, name: 'Bob#0002', tag: 'Bob#0002', isFriend: false, status: 'pending' },
-      { id: 3, name: 'Charlie#0003', tag: 'Charlie#0003', isFriend: false, status: 'pending' },
-      { id: 4, name: 'Diana#0004', tag: 'Diana#0004', isFriend: false, status: 'pending' },
-      { id: 5, name: 'Eve#0005', tag: 'Eve#0005', isFriend: false, status: 'pending' },
-      { id: 6, name: 'Alice#0001', tag: 'Alice#0001', isFriend: false, status: 'pending' },
-      { id: 7, name: 'Bob#0002', tag: 'Bob#0002', isFriend: false, status: 'pending' },
-      { id: 8, name: 'Charlie#0003', tag: 'Charlie#0003', isFriend: false, status: 'pending' },
-      { id: 9, name: 'Diana#0004', tag: 'Diana#0004', isFriend: false, status: 'pending' },
-      { id: 10, name: 'Eve#0005', tag: 'Eve#0005', isFriend: false, status: 'pending' },
-      { id: 11, name: 'Alice#0001', tag: 'Alice#0001', isFriend: false, status: 'pending' },
-      { id: 12, name: 'Bob#0002', tag: 'Bob#0002', isFriend: false, status: 'pending' },
-      { id: 13, name: 'Charlie#0003', tag: 'Charlie#0003', isFriend: false, status: 'pending' },
-      { id: 14, name: 'Diana#0004', tag: 'Diana#0004', isFriend: false, status: 'pending' },
-      { id: 15, name: 'Eve#0005', tag: 'Eve#0005', isFriend: false, status: 'pending' }
-    ];
+    this.getUserIdFromUrl();
+    this.obtenerSolicitudesAmistad();
   }
 
-  searchUser(): void {
-    if (!this.searchTag) {
-      this.filteredUsers = []; // Reiniciar la lista de usuarios filtrados si no hay ninguna etiqueta de búsqueda
-      this.selectedUser = null; // Limpiar el usuario seleccionado
-      return;
-    }
-    this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(this.searchTag.toLowerCase()));
+
+  getUserIdFromUrl() {
+    this.route.paramMap.subscribe(params => {
+      if (params !== null) {
+        const userIdParam = params.get('userId');
+        if (userIdParam !== null) {
+          this.userId = +userIdParam;
+        } else {
+          console.error('ID de usuario no encontrada en la URL');
+        }
+      }
+    });
   }
+
+  buscarAmigo(): void {
+    if (this.tagBusqueda.trim() !== '') {
+      const tagCodificado = encodeURIComponent(this.tagBusqueda); 
+      this.userService.buscarAmigo(tagCodificado) 
+        .subscribe(
+          data => {
+            if (data.tags && data.tags.length > 0) {
+              console.log('Usuario encontrado:', data.tags[0]); // Accede al primer elemento del array "tags"
+              this.amigoEncontrado = data.tags[0]; // Asigna el tag encontrado
+            } else {
+              console.error('No se encontraron tags en la respuesta.');
+            }
+          },
+          error => {
+            console.error('Error al buscar amigo:', error);
+          }
+        );
+    } else {
+      this.amigoEncontrado = ''; 
+    }
+  }
+
+  enviarSolicitud(tagAmigo: string): void {
+      this.userService.enviarSolicitudAmigo(this.userId, tagAmigo)
+        .subscribe(
+          (response: any) => {
+            console.log('Solicitud enviada correctamente:', response);
+          },
+          error => {
+            console.error('Error al enviar solicitud:', error);
+          }
+        );
   
 
-  selectUser(user: User): void {
-    this.searchTag = user.name; // Llena el campo de búsqueda con el nombre del usuario seleccionado
-    this.searchResult = user; // Actualiza el resultado de la búsqueda con el usuario seleccionado
-    this.selectedUser = user; // Actualiza el usuario seleccionado
-    this.filteredUsers = []; // Limpia la lista de usuarios filtrados
-  }
-  sendFriendRequest(user: User): void {
-    if (this.sentRequests.some(req => req.id === user.id)) {
-      alert('Ya has enviado una solicitud a este usuario.');
-      return;
-    }
-    user.status = 'pending';
-    this.sentRequests.push(user);
-    alert(`Solicitud de amistad enviada a ${user.name}`);
-    this.searchResult = null;
-  }
+        }
+  
+        obtenerSolicitudesAmistad(): void {
+          this.userService.obtenerSolicitudesAmistad(this.userId)
+            .subscribe(
+              (data: any) => {
+                console.log('Solicitudes de amistad:', data);
+                this.solicitudesAmistad = data; 
+              },
+              error => {
+                console.error('Error al obtener las solicitudes de amistad:', error);
+              }
+            );
+        }
 
-  acceptRequest(request: User): void {
-    request.isFriend = true;
-    request.status = 'accepted';
-    this.friends.push(request);
-    // Eliminar de la lista de solicitudes recibidas
-    this.friendRequests = this.friendRequests.filter(req => req.id !== request.id);
-    alert(`Solicitud de amistad aceptada con ${request.name}`);
-  }
+        aceptarSolicitud(userId: number, tagAmigo: string): void {
+          this.userService.aceptarSolicitud(this.userId, tagAmigo)
+            .subscribe(
+              (response: any) => {
+                console.log('Solicitud aceptada:', response.message);
+              },
+              error => {
+                console.error('Error al aceptar la solicitud:', error);
+              }
+            );
+        }
 
-  denyRequest(request: User): void {
-    request.status = 'denied';
-    // Eliminar de la lista de solicitudes recibidas
-    this.friendRequests = this.friendRequests.filter(req => req.id !== request.id);
-    alert(`Solicitud de amistad denegada con ${request.name}`);
-  }
+        denegarSolicitud(userId: number, tagAmigo: string): void {
+          this.userService.denegarSolicitud(this.userId, tagAmigo)
+            .subscribe(
+              (response: any) => {
+                console.log('Solicitud denegada:', response.message);
+              },
+              error => {
+                console.error('Error al denegar la solicitud:', error);
+              }
+            );
+        }
+        
+        
+  
+
 }
