@@ -221,8 +221,8 @@ export class UsersService {
   ///////SERVICIOS DISCORD
 
 
-  buscarAmigo(tag: string): Observable<any> {
-    const url = `http://127.0.0.1:8000/api/Amigos/buscaramigos?tag=${tag}`;
+  buscarAmigo(userId: number, tag: string): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Amigos/${userId}/buscaramigos?tag=${tag}`;
     return this.http.get<any>(url);
   }
 
@@ -251,5 +251,8 @@ export class UsersService {
     return this.http.get<any>(url);
   }
 
+  obtenerTagUsuario(userId: number): Observable<any> {
+    return this.http.get<any>(`http://127.0.0.1:8000/api/User/${userId}/tag`);
+  }
   
 }

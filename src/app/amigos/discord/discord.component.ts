@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import { Usuario } from "../../../models/Usuario";
 
 @Component({
   selector: 'app-discord',
@@ -15,6 +14,7 @@ export class DiscordComponent implements OnInit {
   userId: number;
   solicitudesAmistad: any[] = [];
   listaAmigos: any[] = [];
+  userTag: any;
 
   constructor(private route: ActivatedRoute, private userService: UsersService) {}
 
@@ -23,6 +23,7 @@ export class DiscordComponent implements OnInit {
     this.getUserIdFromUrl();
     this.obtenerSolicitudesAmistad();
     this.obtenerListaAmigos();
+    this.obtenerTagUsuario()
   }
 
 
@@ -42,14 +43,15 @@ export class DiscordComponent implements OnInit {
   buscarAmigo(): void {
     if (this.tagBusqueda.trim() !== '') {
       const tagCodificado = encodeURIComponent(this.tagBusqueda); 
-      this.userService.buscarAmigo(tagCodificado) 
+      this.userService.buscarAmigo(this.userId, tagCodificado) 
         .subscribe(
           data => {
             if (data.tags && data.tags.length > 0) {
               console.log('Usuario encontrado:', data.tags[0]); // Accede al primer elemento del array "tags"
               this.amigoEncontrado = data.tags[0]; // Asigna el tag encontrado
             } else {
-              console.error('No se encontraron tags en la respuesta.');
+              console.error('Este es tu propio usertag, introduce otro');
+              alert('Este es tu propio usertag, introduce otro')
             }
           },
           error => {
@@ -66,9 +68,11 @@ export class DiscordComponent implements OnInit {
         .subscribe(
           (response: any) => {
             console.log('Solicitud enviada correctamente:', response);
+            alert('Solicitud de amistad enviada correctamente')
           },
           error => {
             console.error('Error al enviar solicitud:', error);
+            alert('Ya existe una solicitud pendiente entre este usuario y tu')
           }
         );
   
@@ -105,7 +109,7 @@ export class DiscordComponent implements OnInit {
           this.userService.aceptarSolicitud(this.userId, tagAmigo)
             .subscribe(
               (response: any) => {
-                console.log('Solicitud aceptada:', response.message);
+                console.log('Solicitud aceptada:', response);
               },
               error => {
                 console.error('Error al aceptar la solicitud:', error);
@@ -117,14 +121,25 @@ export class DiscordComponent implements OnInit {
           this.userService.denegarSolicitud(this.userId, tagAmigo)
             .subscribe(
               (response: any) => {
-                console.log('Solicitud denegada:', response.message);
+                console.log('Solicitud denegada:', response);
               },
               error => {
                 console.error('Error al denegar la solicitud:', error);
               }
             );
         }
-        
+  
+        obtenerTagUsuario(): void {
+          this.userService.obtenerTagUsuario(this.userId)
+            .subscribe(
+              data => {
+                this.userTag = data.tag;
+              },
+              error => {
+                console.error('Error al obtener el tag del usuario:', error);
+              }
+            );
+        }
         
   
 
