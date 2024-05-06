@@ -12,6 +12,7 @@ import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxe
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
 import { HospitalComponent } from './hospital/hospital.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
   { path: 'xuxedex', component: XuxedexComponent },
   { path: 'amigos/:userId', component: DiscordComponent },
+  { path: 'chat', component: ChatComponent },
 
   { 
     path: 'lista-usuarios', component: ListaUsuariosComponent, 

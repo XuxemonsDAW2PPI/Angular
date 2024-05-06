@@ -1,0 +1,31 @@
+<div class="container-wrapper">
+    <div class="container">
+      <div class="amigos-lista">
+        <h2>Lista de Amigos</h2>
+        <ul>
+          <li *ngFor="let amigo of listaAmigos" (click)="mostrarMensajes(amigo.id)" [class.selected]="amigo.id === amigoSeleccionado">
+            {{ amigo.nombre }}
+          </li>
+        </ul>
+      </div>
+      <div class="chat">
+        <h2>Conversación con {{ amigoSeleccionadoNombre }}</h2>
+        <div class="mensajes-panel">
+          <div class="mensajes">
+            <div *ngFor="let mensaje of mensajesActuales">
+              <p>{{ mensaje.contenido }}</p>
+              <p>{{ mensaje.fecha | date }}</p>
+            </div>
+          </div>
+          <div class="mensajes-secundario">
+            <!-- Aquí puedes agregar otro panel de mensajes si es necesario -->
+          </div>
+        </div>
+        <div class="campo-mensaje">
+          <input type="text" placeholder="Escribe un mensaje" [(ngModel)]="mensajeNuevo" (keyup.enter)="enviarMensaje()">
+          <button (click)="enviarMensaje()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -36,5 +36,8 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/amigos', this.userId]);
   }
 
+  navigateToChat() {
+    this.router.navigateByUrl('/chat');
+  }
 
 }

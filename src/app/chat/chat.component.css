@@ -1,0 +1,115 @@
+.container-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Añadimos un borde al contenedor */
+    border-radius: 10px; /* Añadimos bordes redondeados al contenedor */
+    
+    /* Centrar vertical y horizontalmente */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between; /* Divide los elementos hijos en dos contenedores diferentes */
+  }
+  
+  .amigos-lista {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto; /* Añade barra de desplazamiento vertical si es necesario */
+    max-height: calc(100vh - 100px); /* Limita la altura máxima de la lista de amigos */
+  }
+  
+  .amigos-lista h2 {
+    margin-top: 0;
+  }
+  
+  .amigos-lista ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .amigos-lista li {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .amigos-lista li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .amigos-lista li.selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .chat {
+    flex: 3;
+    padding: 20px;
+    overflow-y: auto; /* Añade barra de desplazamiento vertical si es necesario */
+    max-height: calc(100vh - 100px); /* Limita la altura máxima de la lista de mensajes */
+  }
+  
+  .chat h2 {
+    margin-top: 0;
+  }
+  
+  .mensajes-panel {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Añade barras de desplazamiento vertical si es necesario */
+  }
+  
+  .mensajes {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    overflow-y: auto; /* Añade barras de desplazamiento vertical si es necesario */
+  }
+  
+  
+  
+  .mensajes {
+    margin-bottom: 20px;
+  }
+  
+  .mensaje {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .campo-mensaje {
+    display: flex;
+  }
+  
+  .campo-mensaje input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .campo-mensaje button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .campo-mensaje button:hover {
+    background-color: #0056b3;
+  }
+  

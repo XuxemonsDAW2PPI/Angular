@@ -26,6 +26,7 @@ import { ListaxuxemonsSincrudComponent } from './listaxuxemons-sincrud/listaxuxe
 import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
 import { HospitalComponent } from './hospital/hospital.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { HospitalComponent } from './hospital/hospital.component';
     XuxedexComponent,
     DiscordComponent,
     HospitalComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
