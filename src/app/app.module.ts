@@ -27,6 +27,7 @@ import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
 import { HospitalComponent } from './hospital/hospital.component';
 import { ChatComponent } from './chat/chat.component';
+import { IntercambioComponent } from './intercambio/intercambio.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ChatComponent } from './chat/chat.component';
     DiscordComponent,
     HospitalComponent,
     ChatComponent,
+    IntercambioComponent,
   ],
   imports: [
     BrowserModule,

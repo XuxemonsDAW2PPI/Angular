@@ -13,6 +13,7 @@ import { XuxedexComponent } from './xuxedex/xuxedex.component';
 import { DiscordComponent } from './amigos/discord/discord.component';
 import { HospitalComponent } from './hospital/hospital.component';
 import { ChatComponent } from './chat/chat.component';
+import { IntercambioComponent } from './intercambio/intercambio.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' }, 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'inventario/:userId', component: InventarioComponent }, 
   { path: 'hospital/:userId', component: HospitalComponent }, 
   { path: 'xuxemons/:userId', component: ListaxuxemonsSincrudComponent },
+  { path: 'intercambio/:userId', component: IntercambioComponent },
   { path: 'xuxedex', component: XuxedexComponent },
   { path: 'amigos/:userId', component: DiscordComponent },
   { path: 'chat', component: ChatComponent },

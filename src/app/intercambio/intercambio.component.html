@@ -1,0 +1,33 @@
+<h2>Intercambiar xuxemon con amigo</h2>
+
+<div *ngIf="usersInPage.length > 0" class="users-grid">
+    <div class="user-card" *ngFor="let user of usersInPage" [ngClass]="getClassPorEstado(user.estado)">
+      <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
+      <p *ngIf="user.tamano !== 'Max.Level'">Caramelos: {{ user.caramelos_comidos }}</p>
+      <p *ngIf="user.tamano === 'Grande'">Max Level</p>
+      <img [src]="user.imagen" [alt]="user.nombre" class="user-image" [ngStyle]="{'width': getSize(user.tamano)}">
+      <div class="user-info" [ngClass]="{
+        'tipo-tierra': user.tipo === 'Tierra',
+        'tipo-aire': user.tipo === 'Aire',
+        'tipo-agua': user.tipo === 'Agua'
+      }">
+        <p>{{ user.nombre }}</p>
+        <p>{{ user.tipo }}</p>
+        <p>{{ user.tamano }}</p>
+        <p>{{ user.estado }}</p>
+        <button (click)="Intercambiovisual(user)">Intercambiar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="mostrarListadeAmigos" class="overlay" (click)="cerrarListaAmigos()">
+    <div class="inventario" (click)="evitarCierre($event)">
+      <ul>
+        <h2>Intercambiar con:</h2>
+        <li *ngFor="let amigo of listaAmigos">
+          {{ amigo }}
+        </li>
+      </ul>
+    </div>
+  </div>
