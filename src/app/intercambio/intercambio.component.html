@@ -1,3 +1,30 @@
+<div class="panel middle-panel">
+  <h2>Solicitudes de intercambio pendientes:</h2>
+  <ul>
+    <li *ngFor="let solicitud of solicitudesPendientes">
+      <p>Solicitud de intercambio con: {{ solicitud.usertag }}</p>
+    </li>
+  </ul>
+</div>
+
+<div class="panel middle-panel">
+  <h2>Solicitudes de intercambio recibidas:</h2>
+  <ul>
+    <li *ngFor="let solicitudr of solicitudesRecibidas">
+      <p>Solicitud de intercambio de: {{ solicitudr.usertag1 }}</p>
+      <strong>Información del xuxemon a querer cambiar:</strong>
+      <p>Nombre: {{ solicitudr.nombre_xuxemon1 }}</p>
+      <p>Tamaño: {{ solicitudr.tamano_xuxemon1 }}</p>
+      <p>Nombre: {{ solicitudr.tipo1 }}</p>
+      <p>Caramelos comidos: {{ solicitudr.caramelos_comidosx1 }}</p>
+      <img src="assets/aceptar.png" alt="Aceptar" class="button-image accept-button" (click)="aceptarIntercambio(solicitudr)">
+        <img src="assets/denegar.png" alt="Denegar" class="button-image deny-button" (click)="denegarIntercambio(userId, solicitudr.id)">
+    </li>
+  </ul>
+</div>
+
+
+
 <h2>Intercambiar xuxemon con amigo</h2>
 
 <div *ngIf="usersInPage.length > 0" class="users-grid">
@@ -26,8 +53,30 @@
       <ul>
         <h2>Intercambiar con:</h2>
         <li *ngFor="let amigo of listaAmigos">
-          {{ amigo }}
+          <button (click)="iniciarIntercambioConAmigo(amigo)"> {{ amigo.nombre }}</button>
         </li>
       </ul>
+    </div>
+  </div>
+
+  <div *ngIf="mostrarListaXuxemons && selectedSolicitud" class="overlay" (click)="cerrarListaAmigos()">
+    <div class="inventario" (click)="evitarCierre($event)">
+      <div class="user-card" *ngFor="let user of usersInPage" [ngClass]="getClassPorEstado(user.estado)">
+        <div class="progress-bar" [style.width]="calculateProgressBarWidth(user.tamano)"></div>
+        <p *ngIf="user.tamano !== 'Max.Level'">Caramelos: {{ user.caramelos_comidos }}</p>
+        <p *ngIf="user.tamano === 'Grande'">Max Level</p>
+        <img [src]="user.imagen" [alt]="user.nombre" class="user-image" [ngStyle]="{'width': getSize(user.tamano)}">
+        <div class="user-info" [ngClass]="{
+          'tipo-tierra': user.tipo === 'Tierra',
+          'tipo-aire': user.tipo === 'Aire',
+          'tipo-agua': user.tipo === 'Agua'
+        }">
+          <p>{{ user.nombre }}</p>
+          <p>{{ user.tipo }}</p>
+          <p>{{ user.tamano }}</p>
+          <p>{{ user.estado }}</p>
+          <button>Intercambiar</button>
+        </div>
+      </div>
     </div>
   </div>

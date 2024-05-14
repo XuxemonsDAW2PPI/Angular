@@ -255,4 +255,26 @@ export class UsersService {
     return this.http.get<any>(`http://127.0.0.1:8000/api/User/${userId}/tag`);
   }
   
+
+  // Intercambio
+
+  registrarSolicitudIntercambio(idUsuario1: number, tagUsuario1: string, nombreXuxemon1: string, tipo1: string, tamanoXuxemon1: string, caramelosComidosXuxemon1: number, idUsuario2: number, tagUsuario2: string) {
+    const url = `http://127.0.0.1:8000/api/Intercambio/solicitud/${idUsuario1}/${tagUsuario1}/${nombreXuxemon1}/${tipo1}/${tamanoXuxemon1}/${caramelosComidosXuxemon1}/${idUsuario2}/${tagUsuario2}`;
+    return this.http.post<any>(url, {});
+  }
+
+  listarSolicitudesPendientes(idUsuario: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/listasolicitudes/${idUsuario}`;
+    return this.http.get<any>(url);
+  }
+
+  Solicitudesrecibidas(idUsuario: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/solicitudesrecibidas/${idUsuario}`;
+    return this.http.get<any>(url);
+  }
+  DenegarIntercambio(idUsuario: number, idIntercambio: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/${idUsuario}/denegar/${idIntercambio}`;
+    return this.http.delete<any>(url);
+  }
+
 }

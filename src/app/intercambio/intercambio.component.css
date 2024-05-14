@@ -116,3 +116,119 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
+  .container {
+    display: flex;
+    flex-direction: row; /* Dirección horizontal para los containers */
+    width: 100%;
+    max-width: 1200px;
+    max-height: 1200px;
+    margin: 20px auto;
+    box-sizing: border-box;
+  }
+  
+  .search-section {
+    flex: 1; /* Que ocupe todo el ancho disponible */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Separación entre los containers */
+  }
+  
+  .panel {
+    flex: 1; /* Igual ancho para los paneles */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left-panel {
+    margin-right: 10px; /* Separación entre los containers */
+  }
+  
+  .middle-panel {
+    margin-right: 10px; /* Separación entre los containers */
+  }
+  
+  
+  
+  h2 {
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  li {
+    padding: 10px;
+    background-color: #f8f8f8;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+  }
+  
+  li:hover {
+    background-color: #767779;
+  }
+  
+  input[type="text"],
+  button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    margin-left: 10px;
+  }
+  
+  .button-image {
+    width: 40px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .friend-request {
+    display: flex;
+    align-items: center;
+  }
+  
+  .friend-request span {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    box-shadow: 0 2px 4px rgba(24, 23, 23, 0.267);
+  }
+  
+  .button-image:hover {
+    background-color: #ffffff;
+    border-color: #999;
+  }
+  
+  .panel ul {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  

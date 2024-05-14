@@ -20,6 +20,8 @@ export class IntercambioComponent {
   mostrarEditXuxemon: boolean = false;
   idXuxemon: number;
 
+  mostrarListaXuxemons: boolean = false;
+
   selectedXuxemonName: string = '';
 
   xuxemonsDisponibles: any[]; 
@@ -28,6 +30,13 @@ export class IntercambioComponent {
 
   tamanoXuxemon: string = '';
   listaAmigos: any;
+  userTag: any;
+user: any;
+
+selectedUser: Xuxemon;
+solicitudesPendientes: any[];
+solicitudesRecibidas: any[];
+selectedSolicitud: any;
 
   
   constructor(private userService: UsersService, private route: ActivatedRoute) { }
@@ -38,6 +47,8 @@ export class IntercambioComponent {
       const userIdParam = params.get('userId');
       if (userIdParam !== null) {
         this.userId = +userIdParam;
+        this.listarSolicitudesPendientes();
+        this.Solicitudesrecibidas();
       }
     });
   }
@@ -60,21 +71,22 @@ export class IntercambioComponent {
   }
 
   Intercambiovisual(user: Xuxemon) {
-
+    this.selectedUser = user;
     this.selectedXuxemonName = user.nombre;
     this.mostrarListadeAmigos = true;
-
-      this.userService.listaAmigos(this.userId)
-        .subscribe(
-          (data: any) => {
-            console.log('Lista de amigos obtenido:', data);
-            this.listaAmigos = data; 
-          },
-          error => {
-            console.error('Error al obtener la lista de amigos:', error);
-          }
-        );
-    }
+  
+    this.userService.listaAmigos(this.userId)
+      .subscribe(
+        (data: any) => {
+          console.log('Lista de amigos obtenido:', data);
+          this.listaAmigos = data; 
+          this.obtenerTagUsuario();
+        },
+        error => {
+          console.error('Error al obtener la lista de amigos:', error);
+        }
+      );
+  }
   
 
   evitarCierre(event: MouseEvent) {
@@ -126,7 +138,79 @@ export class IntercambioComponent {
     return status === 'Activo' ? 'user-card-active' : 'user-card';
   }
 
+  obtenerTagUsuario(): void {
+    this.userService.obtenerTagUsuario(this.userId)
+      .subscribe(
+        data => {
+          this.userTag = data.tag;
+        },
+        error => {
+          console.error('Error al obtener el tag del usuario:', error);
+        }
+      );
+  }
+
+  iniciarIntercambioConAmigo(amigo: any) {
+    const idUsuario1 = this.userId;
+    const tagUsuario1 = encodeURIComponent(this.userTag); 
+    const nombreXuxemon1 = this.selectedXuxemonName;
+    const tipo1 = this.selectedUser.tipo; 
+    const tamanoXuxemon1 = this.selectedUser.tamano; 
+    const caramelosComidosXuxemon1 = this.selectedUser.caramelos_comidos; 
+    const idUsuario2 = amigo.id; 
+    const tagUsuario2 = encodeURIComponent(amigo.nombre); 
+  
+    this.userService.registrarSolicitudIntercambio(idUsuario1, tagUsuario1, nombreXuxemon1, tipo1, tamanoXuxemon1, caramelosComidosXuxemon1, idUsuario2, tagUsuario2)
+      .subscribe(
+        (response: any) => {
+          console.log('Solicitud de intercambio iniciado con éxito:', response);
+          alert('Se ha mandado la petición de intercambio al usuario seleccionado');
+        },
+        error => {
+          console.error('Error al iniciar el solicitud de intercambio:', error);
+          alert('Hubo un error al mandar la petición');
+        }
+      );
+    }
 
 
+    listarSolicitudesPendientes() {
+      this.userService.listarSolicitudesPendientes(this.userId).subscribe(
+        (data) => {
+          this.solicitudesPendientes = data;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
 
+    Solicitudesrecibidas() {
+      this.userService.Solicitudesrecibidas(this.userId).subscribe(
+        (data) => {
+          this.solicitudesRecibidas = data;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+
+    aceptarIntercambio(solicitudr: any): void {
+      this.selectedSolicitud = solicitudr;
+      // Aquí puedes realizar alguna acción adicional si es necesario
+    }
+
+    denegarIntercambio(idUsuario: number, idIntercambio: number): void {
+      this.userService.DenegarIntercambio(this.userId, idIntercambio).subscribe(
+        () => {
+          console.log('Intercambio denegado exitosamente');
+          alert('Solicitud de intercambio cancelada')
+        },
+        error => {
+          console.error('Error al denegar el intercambio:', error);
+          alert('No se pudo cancelar la solicitud de intercambio')
+        }
+      );
+    }
 }
