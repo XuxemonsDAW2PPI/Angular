@@ -277,4 +277,8 @@ export class UsersService {
     return this.http.delete<any>(url);
   }
 
+  aceptarSolicitudIntercambio(idusuario: number, datos: any): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/aceptar/${idusuario}`;
+    return this.http.post(url, datos);
+  }
 }

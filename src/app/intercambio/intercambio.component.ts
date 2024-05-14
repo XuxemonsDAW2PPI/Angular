@@ -195,10 +195,16 @@ selectedSolicitud: any;
         }
       );
     }
+    
 
-    aceptarIntercambio(solicitudr: any): void {
+    aceptarIntercambioVisual(solicitudr: any): void {
       this.selectedSolicitud = solicitudr;
-      // Aquí puedes realizar alguna acción adicional si es necesario
+      this.mostrarListaXuxemons = true;
+    }
+
+    cerrarListaXuxemons(): void {
+      this.mostrarListaXuxemons = false;
+      this.selectedSolicitud = null;
     }
 
     denegarIntercambio(idUsuario: number, idIntercambio: number): void {
@@ -212,5 +218,25 @@ selectedSolicitud: any;
           alert('No se pudo cancelar la solicitud de intercambio')
         }
       );
+    }
+
+
+    aceptarIntercambio(user: any): void {
+      const datos = {
+        nombre_xuxemon2: user.nombre,
+        tipo2: user.tipo,
+        tamano_xuxemon2: user.tamano,
+        caramelos_comidosx2: user.caramelos_comidos
+      };
+  
+      this.userService.aceptarSolicitudIntercambio(this.userId, datos).subscribe(response => {
+        console.log('Solicitud aceptada', response);
+        alert('Petición confirmada con éxito, esperando al otro usuario...');
+        this.mostrarListaXuxemons = false;
+        this.selectedSolicitud = null;
+        this.Solicitudesrecibidas();
+      }, error => {
+        console.error('Error al aceptar la solicitud', error);
+      });
     }
 }
