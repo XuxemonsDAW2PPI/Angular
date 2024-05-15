@@ -8,19 +8,20 @@
       <p>Tamaño: {{ solicitud.tamano_xuxemon1 }}</p>
       <p>Tipo: {{ solicitud.tipo1 }}</p>
       <p>Caramelos comidos: {{ solicitud.caramelos_comidosx1 }}</p>
-
       <strong>Él te ofrece:</strong>
-      <ng-container *ngIf="solicitud.nombre_xuxemon2 && solicitud.tamano_xuxemon2 && solicitud.tipo2 && solicitud.caramelos_comidosx2; else noOfrece">
-        <p>Nombre: {{ solicitud.nombre_xuxemon2 }}</p>
-        <p>Tamaño: {{ solicitud.tamano_xuxemon2 }}</p>
-        <p>Tipo: {{ solicitud.tipo2 }}</p>
-        <p>Caramelos comidos: {{ solicitud.caramelos_comidosx2 }}</p>
-        <button (click)="confirmarIntercambio(solicitud)">Confirmar Intercambio</button>
-        <button (click)="rechazarIntercambio(solicitud)">Rechazar Intercambio</button>
-      </ng-container>
-      <ng-template #noOfrece>
-        <p>El otro usuario aún no ofrece un xuxemon.</p>
-      </ng-template>
+      <p *ngIf="solicitud.nombre_xuxemon2">Nombre: {{ solicitud.nombre_xuxemon2 }}</p>
+      <p *ngIf="solicitud.tamano_xuxemon2">Tamaño: {{ solicitud.tamano_xuxemon2 }}</p>
+      <p *ngIf="solicitud.tipo2">Tipo: {{ solicitud.tipo2 }}</p>
+      <p *ngIf="solicitud.caramelos_comidosx2">Caramelos comidos: {{ solicitud.caramelos_comidosx2 }}</p>
+      <p *ngIf="!solicitud.nombre_xuxemon2 && !solicitud.tamano_xuxemon2 && !solicitud.tipo2 && !solicitud.caramelos_comidosx2">El otro usuario aún no ofrece un xuxemon.</p>
+      <button *ngIf="solicitud.nombre_xuxemon2 && solicitud.tamano_xuxemon2 && solicitud.tipo2"
+              (click)="confirmarIntercambio(userId)">
+        Confirmar Intercambio
+      </button>
+      <button *ngIf="solicitud.nombre_xuxemon2 && solicitud.tamano_xuxemon2 && solicitud.tipo2"
+              (click)="denegarIntercambio(userId, solicitud.id)">
+        Denegar intercambio
+      </button>
     </li>
   </ul>
 </div>

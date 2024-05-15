@@ -212,6 +212,8 @@ selectedSolicitud: any;
         () => {
           console.log('Intercambio denegado exitosamente');
           alert('Solicitud de intercambio cancelada')
+          this.listarSolicitudesPendientes();
+          this.Solicitudesrecibidas();          
         },
         error => {
           console.error('Error al denegar el intercambio:', error);
@@ -238,5 +240,21 @@ selectedSolicitud: any;
       }, error => {
         console.error('Error al aceptar la solicitud', error);
       });
+    }
+
+
+    confirmarIntercambio(userId: number) {
+  
+      this.userService.confirmarIntercambio1(this.userId).subscribe(
+        response => {
+          console.log('Intercambio confirmado', response);
+          alert('¡Intercambio hecho con éxito!');
+          this.listarSolicitudesPendientes();
+        },
+        error => {
+          console.error('Error al confirmar el intercambio', error);
+          alert('No se pudo hacer el intercambio');
+        }
+      );
     }
 }

@@ -281,4 +281,9 @@ export class UsersService {
     const url = `http://127.0.0.1:8000/api/Intercambio/aceptar/${idusuario}`;
     return this.http.post(url, datos);
   }
+
+  confirmarIntercambio1(idusuario: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/aceptarfinal?idusuario=${idusuario}`;
+    return this.http.post<any>(url, {});
+  }
 }
