@@ -58,7 +58,7 @@ selectedSolicitud: any;
     this.userService.loadUsers()
       .subscribe(data => {
         this.allUsers = data;
-        this.getXuxemonsDelUser(this.userId);
+        this.getXuxemonsDelUsersinEnf(this.userId);
       }, error => {
         console.error('Error al cargar los usuarios desde la API:', error);
       });
@@ -124,8 +124,8 @@ selectedSolicitud: any;
   }
 
 
-  getXuxemonsDelUser(userId: number): void {
-    this.userService.getXuxemonsDelUser(userId)
+  getXuxemonsDelUsersinEnf(userId: number): void {
+    this.userService.MostrarxuxemonsinEnf(userId)
       .subscribe(data => {
         const userXuxemons = data;
         this.usersInPage = [...userXuxemons, ...this.usersInPage];

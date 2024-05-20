@@ -286,4 +286,9 @@ export class UsersService {
     const url = `http://127.0.0.1:8000/api/Intercambio/aceptarfinal?idusuario=${idusuario}`;
     return this.http.post<any>(url, {});
   }
+
+  MostrarxuxemonsinEnf(id: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Xuxemon/mostrarsinenf/${id}`;
+    return this.http.get<any>(url);
+}
 }
