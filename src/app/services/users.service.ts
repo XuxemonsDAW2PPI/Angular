@@ -277,13 +277,13 @@ export class UsersService {
     return this.http.delete<any>(url);
   }
 
-  aceptarSolicitudIntercambio(idusuario: number, datos: any): Observable<any> {
-    const url = `http://127.0.0.1:8000/api/Intercambio/aceptar/${idusuario}`;
+  aceptarSolicitudIntercambio(idusuario: number,idIntercambio: number, datos: any): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/aceptar/${idusuario}/${idIntercambio}`;
     return this.http.post(url, datos);
   }
 
-  confirmarIntercambio1(idusuario: number): Observable<any> {
-    const url = `http://127.0.0.1:8000/api/Intercambio/aceptarfinal?idusuario=${idusuario}`;
+  confirmarIntercambio1(idusuario: number, idIntercambio: number): Observable<any> {
+    const url = `http://127.0.0.1:8000/api/Intercambio/${idIntercambio}/aceptarfinal?idusuario=${idusuario}`;
     return this.http.post<any>(url, {});
   }
 

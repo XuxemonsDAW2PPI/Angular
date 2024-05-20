@@ -15,7 +15,7 @@
       <p *ngIf="solicitud.caramelos_comidosx2">Caramelos comidos: {{ solicitud.caramelos_comidosx2 }}</p>
       <p *ngIf="!solicitud.nombre_xuxemon2 && !solicitud.tamano_xuxemon2 && !solicitud.tipo2 && !solicitud.caramelos_comidosx2">El otro usuario aún no ofrece un xuxemon.</p>
       <button *ngIf="solicitud.nombre_xuxemon2 && solicitud.tamano_xuxemon2 && solicitud.tipo2"
-              (click)="confirmarIntercambio(userId)">
+              (click)="confirmarIntercambio(userId, solicitud.id)">
         Confirmar Intercambio
       </button>
       <button *ngIf="solicitud.nombre_xuxemon2 && solicitud.tamano_xuxemon2 && solicitud.tipo2"
@@ -59,7 +59,7 @@
         <p>{{ user.tipo }}</p>
         <p>{{ user.tamano }}</p>
         <p>{{ user.estado }}</p>
-        <button (click)="aceptarIntercambio(user)">Intercambiar</button>
+        <button (click)="aceptarIntercambio(user, selectedSolicitud.id)">Intercambiar</button>
       </div>
     </div>
   </div>

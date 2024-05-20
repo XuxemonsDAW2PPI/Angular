@@ -223,15 +223,17 @@ selectedSolicitud: any;
     }
 
 
-    aceptarIntercambio(user: any): void {
+    aceptarIntercambio(user: any,solicitudId: number): void {
       const datos = {
         nombre_xuxemon2: user.nombre,
         tipo2: user.tipo,
         tamano_xuxemon2: user.tamano,
         caramelos_comidosx2: user.caramelos_comidos
       };
+
+      const idintercambio = this.selectedSolicitud.id;
   
-      this.userService.aceptarSolicitudIntercambio(this.userId, datos).subscribe(response => {
+      this.userService.aceptarSolicitudIntercambio(this.userId, idintercambio, datos).subscribe(response => {
         console.log('Solicitud aceptada', response);
         alert('Petición confirmada con éxito, esperando al otro usuario...');
         this.mostrarListaXuxemons = false;
@@ -243,9 +245,9 @@ selectedSolicitud: any;
     }
 
 
-    confirmarIntercambio(userId: number) {
+    confirmarIntercambio(userId: number, idIntercambio: number) {
   
-      this.userService.confirmarIntercambio1(this.userId).subscribe(
+      this.userService.confirmarIntercambio1(this.userId, idIntercambio).subscribe(
         response => {
           console.log('Intercambio confirmado', response);
           alert('¡Intercambio hecho con éxito!');
